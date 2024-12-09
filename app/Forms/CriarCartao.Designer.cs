@@ -1,4 +1,4 @@
-﻿namespace app
+﻿namespace app.Forms
 {
     partial class CriarCartao
     {
@@ -28,50 +28,54 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.txt_trienio = new Krypton.Toolkit.KryptonTextBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbl_previsualização = new System.Windows.Forms.Label();
-            this.txt_nome = new Krypton.Toolkit.KryptonTextBox();
-            this.ComBox_Curso = new Krypton.Toolkit.KryptonComboBox();
-            this.btn_GeraQr = new Krypton.Toolkit.KryptonButton();
-            this.btn_Guardar = new Krypton.Toolkit.KryptonButton();
-            this.btn_CarregarFt = new Krypton.Toolkit.KryptonButton();
-            this.txt_numero = new Krypton.Toolkit.KryptonTextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
             this.PixBx_Qrcode = new Krypton.Toolkit.KryptonPictureBox();
             this.PixBx_FotoAluno = new Krypton.Toolkit.KryptonPictureBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_trienio = new System.Windows.Forms.TextBox();
+            this.ComBox_Curso = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txt_nome = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txt_numero = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btn_GeraQr = new System.Windows.Forms.Button();
+            this.btn_CarregarFt = new System.Windows.Forms.Button();
+            this.btn_Guardar = new Krypton.Toolkit.KryptonButton();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel6.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ComBox_Curso)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PixBx_Qrcode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PixBx_FotoAluno)).BeginInit();
             this.SuspendLayout();
             // 
-            // txt_trienio
+            // panel6
             // 
-            this.txt_trienio.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_trienio.AutoCompleteCustomSource.AddRange(new string[] {
-            "dsd"});
-            this.txt_trienio.Location = new System.Drawing.Point(239, 473);
-            this.txt_trienio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_trienio.Name = "txt_trienio";
-            this.txt_trienio.Size = new System.Drawing.Size(428, 56);
-            this.txt_trienio.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txt_trienio.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.txt_trienio.StateCommon.Border.Rounding = 15F;
-            this.txt_trienio.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txt_trienio.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_trienio.TabIndex = 64;
-            this.txt_trienio.Text = "Triénio";
-            this.txt_trienio.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_trienio.WordWrap = false;
-            this.txt_trienio.TextChanged += new System.EventHandler(this.txt_trienio_TextChanged);
-            this.txt_trienio.Enter += new System.EventHandler(this.txt_trienio_Enter);
-            this.txt_trienio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_trienio_KeyDown);
-            this.txt_trienio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_trienio_KeyPress_1);
-            this.txt_trienio.Leave += new System.EventHandler(this.txt_trienio_Leave);
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.panel1);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.txt_trienio);
+            this.panel6.Controls.Add(this.ComBox_Curso);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.txt_nome);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.txt_numero);
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.btn_GeraQr);
+            this.panel6.Controls.Add(this.btn_CarregarFt);
+            this.panel6.Controls.Add(this.btn_Guardar);
+            this.panel6.Controls.Add(this.label5);
+            this.panel6.Location = new System.Drawing.Point(13, 13);
+            this.panel6.Margin = new System.Windows.Forms.Padding(4);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(1087, 616);
+            this.panel6.TabIndex = 91;
             // 
             // panel1
             // 
@@ -79,204 +83,34 @@
             this.panel1.Controls.Add(this.lbl_previsualização);
             this.panel1.Controls.Add(this.PixBx_Qrcode);
             this.panel1.Controls.Add(this.PixBx_FotoAluno);
-            this.panel1.Location = new System.Drawing.Point(1057, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel1.Location = new System.Drawing.Point(784, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(521, 961);
-            this.panel1.TabIndex = 69;
+            this.panel1.Size = new System.Drawing.Size(301, 614);
+            this.panel1.TabIndex = 102;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // lbl_previsualização
             // 
             this.lbl_previsualização.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lbl_previsualização.AutoSize = true;
-            this.lbl_previsualização.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_previsualização.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_previsualização.ForeColor = System.Drawing.Color.White;
-            this.lbl_previsualização.Location = new System.Drawing.Point(28, 14);
+            this.lbl_previsualização.Location = new System.Drawing.Point(31, 26);
             this.lbl_previsualização.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_previsualização.Name = "lbl_previsualização";
-            this.lbl_previsualização.Size = new System.Drawing.Size(460, 67);
+            this.lbl_previsualização.Size = new System.Drawing.Size(239, 36);
             this.lbl_previsualização.TabIndex = 61;
             this.lbl_previsualização.Text = "Prévisualização";
-            // 
-            // txt_nome
-            // 
-            this.txt_nome.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_nome.AutoCompleteCustomSource.AddRange(new string[] {
-            "dsd"});
-            this.txt_nome.Location = new System.Drawing.Point(239, 290);
-            this.txt_nome.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_nome.Name = "txt_nome";
-            this.txt_nome.Size = new System.Drawing.Size(428, 56);
-            this.txt_nome.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txt_nome.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.txt_nome.StateCommon.Border.Rounding = 15F;
-            this.txt_nome.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txt_nome.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nome.TabIndex = 62;
-            this.txt_nome.Text = "Nome";
-            this.txt_nome.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_nome.WordWrap = false;
-            this.txt_nome.Enter += new System.EventHandler(this.txt_nome_Enter);
-            this.txt_nome.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_nome_KeyDown);
-            this.txt_nome.Leave += new System.EventHandler(this.txt_nome_Leave);
-            // 
-            // ComBox_Curso
-            // 
-            this.ComBox_Curso.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComBox_Curso.CornerRoundingRadius = 15F;
-            this.ComBox_Curso.DropDownWidth = 311;
-            this.ComBox_Curso.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.ComBox_Curso.IntegralHeight = false;
-            this.ComBox_Curso.Items.AddRange(new object[] {
-            "Técnico de Logística",
-            "Técnico de Gestão e Prog. de Sistemas Informáticos",
-            "Técnico de Turismo",
-            "Técnico de Comunicação, Marketing, Relações Públicas e Publicidade",
-            "Técnico de Comércio",
-            "Animador Sociocultural"});
-            this.ComBox_Curso.Location = new System.Drawing.Point(239, 559);
-            this.ComBox_Curso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.ComBox_Curso.Name = "ComBox_Curso";
-            this.ComBox_Curso.Size = new System.Drawing.Size(428, 54);
-            this.ComBox_Curso.StateCommon.ComboBox.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.ComBox_Curso.StateCommon.ComboBox.Border.Rounding = 15F;
-            this.ComBox_Curso.StateCommon.ComboBox.Content.Color1 = System.Drawing.Color.Gray;
-            this.ComBox_Curso.StateCommon.ComboBox.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ComBox_Curso.StateCommon.ComboBox.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
-            this.ComBox_Curso.TabIndex = 65;
-            this.ComBox_Curso.Text = "Curso";
-            // 
-            // btn_GeraQr
-            // 
-            this.btn_GeraQr.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_GeraQr.CornerRoundingRadius = 20F;
-            this.btn_GeraQr.Location = new System.Drawing.Point(295, 756);
-            this.btn_GeraQr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_GeraQr.Name = "btn_GeraQr";
-            this.btn_GeraQr.Size = new System.Drawing.Size(309, 69);
-            this.btn_GeraQr.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btn_GeraQr.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btn_GeraQr.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btn_GeraQr.StateCommon.Border.Rounding = 20F;
-            this.btn_GeraQr.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Gray;
-            this.btn_GeraQr.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.Gray;
-            this.btn_GeraQr.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_GeraQr.TabIndex = 68;
-            this.btn_GeraQr.TabStop = false;
-            this.btn_GeraQr.Values.Text = "Gerar Código QR";
-            this.btn_GeraQr.Click += new System.EventHandler(this.btn_GeraQr_Click);
-            // 
-            // btn_Guardar
-            // 
-            this.btn_Guardar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_Guardar.CornerRoundingRadius = 20F;
-            this.btn_Guardar.Location = new System.Drawing.Point(295, 847);
-            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_Guardar.Name = "btn_Guardar";
-            this.btn_Guardar.Size = new System.Drawing.Size(309, 69);
-            this.btn_Guardar.StateCommon.Back.Color1 = System.Drawing.Color.Silver;
-            this.btn_Guardar.StateCommon.Back.Color2 = System.Drawing.Color.Silver;
-            this.btn_Guardar.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btn_Guardar.StateCommon.Border.Rounding = 20F;
-            this.btn_Guardar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.White;
-            this.btn_Guardar.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.White;
-            this.btn_Guardar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Guardar.TabIndex = 67;
-            this.btn_Guardar.TabStop = false;
-            this.btn_Guardar.Values.Text = "Inserir Cartão";
-            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
-            // 
-            // btn_CarregarFt
-            // 
-            this.btn_CarregarFt.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btn_CarregarFt.CornerRoundingRadius = 20F;
-            this.btn_CarregarFt.Location = new System.Drawing.Point(295, 666);
-            this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btn_CarregarFt.Name = "btn_CarregarFt";
-            this.btn_CarregarFt.Size = new System.Drawing.Size(309, 69);
-            this.btn_CarregarFt.StateCommon.Back.Color1 = System.Drawing.Color.White;
-            this.btn_CarregarFt.StateCommon.Back.Color2 = System.Drawing.Color.White;
-            this.btn_CarregarFt.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.btn_CarregarFt.StateCommon.Border.Rounding = 20F;
-            this.btn_CarregarFt.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Gray;
-            this.btn_CarregarFt.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.Gray;
-            this.btn_CarregarFt.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CarregarFt.TabIndex = 66;
-            this.btn_CarregarFt.TabStop = false;
-            this.btn_CarregarFt.Values.Text = "Carregar Foto";
-            this.btn_CarregarFt.Click += new System.EventHandler(this.btn_CarregarFt_Click);
-            // 
-            // txt_numero
-            // 
-            this.txt_numero.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txt_numero.AutoCompleteCustomSource.AddRange(new string[] {
-            "dsd"});
-            this.txt_numero.Location = new System.Drawing.Point(239, 380);
-            this.txt_numero.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txt_numero.Name = "txt_numero";
-            this.txt_numero.Size = new System.Drawing.Size(428, 56);
-            this.txt_numero.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
-            | Krypton.Toolkit.PaletteDrawBorders.Left) 
-            | Krypton.Toolkit.PaletteDrawBorders.Right)));
-            this.txt_numero.StateCommon.Border.GraphicsHint = Krypton.Toolkit.PaletteGraphicsHint.AntiAlias;
-            this.txt_numero.StateCommon.Border.Rounding = 15F;
-            this.txt_numero.StateCommon.Content.Color1 = System.Drawing.Color.Gray;
-            this.txt_numero.StateCommon.Content.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_numero.TabIndex = 63;
-            this.txt_numero.Text = "Número";
-            this.txt_numero.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txt_numero.WordWrap = false;
-            this.txt_numero.TextChanged += new System.EventHandler(this.txt_numero_TextChanged);
-            this.txt_numero.Enter += new System.EventHandler(this.txt_numero_Enter);
-            this.txt_numero.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_numero_KeyDown);
-            this.txt_numero.Leave += new System.EventHandler(this.txt_numero_Leave);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 35F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(264, 74);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 67);
-            this.label1.TabIndex = 61;
-            this.label1.Text = "Criar Cartão";
-            // 
-            // button5
-            // 
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(42)))), ((int)(((byte)(83)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 0);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(41, 39);
-            this.button5.TabIndex = 70;
-            this.button5.Text = "X";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // PixBx_Qrcode
             // 
             this.PixBx_Qrcode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.PixBx_Qrcode.Location = new System.Drawing.Point(112, 585);
+            this.PixBx_Qrcode.Location = new System.Drawing.Point(75, 328);
             this.PixBx_Qrcode.Margin = new System.Windows.Forms.Padding(4);
             this.PixBx_Qrcode.Name = "PixBx_Qrcode";
-            this.PixBx_Qrcode.Size = new System.Drawing.Size(307, 283);
+            this.PixBx_Qrcode.Size = new System.Drawing.Size(160, 160);
             this.PixBx_Qrcode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.PixBx_Qrcode.TabIndex = 1;
             this.PixBx_Qrcode.TabStop = false;
@@ -286,57 +120,236 @@
             this.PixBx_FotoAluno.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PixBx_FotoAluno.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.PixBx_FotoAluno.Image = global::app.Properties.Resources.pessoa;
-            this.PixBx_FotoAluno.Location = new System.Drawing.Point(112, 209);
+            this.PixBx_FotoAluno.Location = new System.Drawing.Point(82, 121);
             this.PixBx_FotoAluno.Margin = new System.Windows.Forms.Padding(4);
             this.PixBx_FotoAluno.Name = "PixBx_FotoAluno";
-            this.PixBx_FotoAluno.Size = new System.Drawing.Size(307, 283);
+            this.PixBx_FotoAluno.Size = new System.Drawing.Size(146, 159);
             this.PixBx_FotoAluno.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.PixBx_FotoAluno.TabIndex = 0;
             this.PixBx_FotoAluno.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(213, 208);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 18);
+            this.label1.TabIndex = 101;
+            this.label1.Text = "Triénio:";
+            // 
+            // txt_trienio
+            // 
+            this.txt_trienio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_trienio.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_trienio.Location = new System.Drawing.Point(216, 230);
+            this.txt_trienio.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_trienio.Name = "txt_trienio";
+            this.txt_trienio.Size = new System.Drawing.Size(304, 24);
+            this.txt_trienio.TabIndex = 99;
+            this.txt_trienio.TextChanged += new System.EventHandler(this.txt_trienio_TextChanged);
+            this.txt_trienio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_trienio_KeyPress);
+            // 
+            // ComBox_Curso
+            // 
+            this.ComBox_Curso.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ComBox_Curso.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComBox_Curso.FormattingEnabled = true;
+            this.ComBox_Curso.Items.AddRange(new object[] {
+            "Técnico de Logística",
+            "Técnico de Gestão e Prog. de Sistemas Informáticos",
+            "Técnico de Turismo",
+            "Técnico de Comunicação, Marketing, Relações Públicas e Publicidade",
+            "Técnico de Comércio",
+            "Animador Sociocultural"});
+            this.ComBox_Curso.Location = new System.Drawing.Point(216, 280);
+            this.ComBox_Curso.Margin = new System.Windows.Forms.Padding(4);
+            this.ComBox_Curso.Name = "ComBox_Curso";
+            this.ComBox_Curso.Size = new System.Drawing.Size(304, 26);
+            this.ComBox_Curso.TabIndex = 100;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(213, 258);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 18);
+            this.label4.TabIndex = 98;
+            this.label4.Text = "Curso";
+            // 
+            // txt_nome
+            // 
+            this.txt_nome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_nome.Location = new System.Drawing.Point(216, 130);
+            this.txt_nome.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_nome.Name = "txt_nome";
+            this.txt_nome.Size = new System.Drawing.Size(304, 24);
+            this.txt_nome.TabIndex = 97;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(213, 158);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(66, 18);
+            this.label3.TabIndex = 96;
+            this.label3.Text = "Número:";
+            // 
+            // txt_numero
+            // 
+            this.txt_numero.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txt_numero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_numero.Location = new System.Drawing.Point(216, 180);
+            this.txt_numero.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_numero.Name = "txt_numero";
+            this.txt_numero.Size = new System.Drawing.Size(304, 24);
+            this.txt_numero.TabIndex = 98;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(213, 108);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(53, 18);
+            this.label2.TabIndex = 94;
+            this.label2.Text = "Nome:";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btn_GeraQr
+            // 
+            this.btn_GeraQr.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_GeraQr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_GeraQr.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_GeraQr.FlatAppearance.BorderSize = 0;
+            this.btn_GeraQr.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_GeraQr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_GeraQr.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_GeraQr.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_GeraQr.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_GeraQr.ForeColor = System.Drawing.Color.White;
+            this.btn_GeraQr.Location = new System.Drawing.Point(251, 418);
+            this.btn_GeraQr.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_GeraQr.Name = "btn_GeraQr";
+            this.btn_GeraQr.Size = new System.Drawing.Size(232, 62);
+            this.btn_GeraQr.TabIndex = 91;
+            this.btn_GeraQr.Text = "Criar Código QR";
+            this.btn_GeraQr.UseVisualStyleBackColor = false;
+            this.btn_GeraQr.Click += new System.EventHandler(this.btn_GeraQr_Click);
+            // 
+            // btn_CarregarFt
+            // 
+            this.btn_CarregarFt.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_CarregarFt.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_CarregarFt.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_CarregarFt.FlatAppearance.BorderSize = 0;
+            this.btn_CarregarFt.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.btn_CarregarFt.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_CarregarFt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_CarregarFt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CarregarFt.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CarregarFt.ForeColor = System.Drawing.Color.White;
+            this.btn_CarregarFt.Location = new System.Drawing.Point(251, 339);
+            this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_CarregarFt.Name = "btn_CarregarFt";
+            this.btn_CarregarFt.Size = new System.Drawing.Size(232, 62);
+            this.btn_CarregarFt.TabIndex = 90;
+            this.btn_CarregarFt.Text = "Carregar Foto";
+            this.btn_CarregarFt.UseVisualStyleBackColor = false;
+            this.btn_CarregarFt.Click += new System.EventHandler(this.btn_CarregarFt_Click);
+            // 
+            // btn_Guardar
+            // 
+            this.btn_Guardar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_Guardar.CornerRoundingRadius = 20F;
+            this.btn_Guardar.Location = new System.Drawing.Point(251, 497);
+            this.btn_Guardar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Guardar.Name = "btn_Guardar";
+            this.btn_Guardar.Size = new System.Drawing.Size(232, 62);
+            this.btn_Guardar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_Guardar.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_Guardar.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.btn_Guardar.StateCommon.Border.Rounding = 20F;
+            this.btn_Guardar.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Gray;
+            this.btn_Guardar.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.Gray;
+            this.btn_Guardar.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Guardar.TabIndex = 88;
+            this.btn_Guardar.TabStop = false;
+            this.btn_Guardar.Values.Text = "Criar";
+            this.btn_Guardar.Click += new System.EventHandler(this.btn_Guardar_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(24, 26);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(141, 29);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Criar Cartão";
             // 
             // CriarCartao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.ClientSize = new System.Drawing.Size(1579, 961);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.txt_trienio);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.txt_nome);
-            this.Controls.Add(this.ComBox_Curso);
-            this.Controls.Add(this.btn_GeraQr);
-            this.Controls.Add(this.btn_Guardar);
-            this.Controls.Add(this.btn_CarregarFt);
-            this.Controls.Add(this.txt_numero);
-            this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.ClientSize = new System.Drawing.Size(1113, 642);
+            this.Controls.Add(this.panel6);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "CriarCartao";
-            this.Text = "CriarCartao";
+            this.Text = "Form2";
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ComBox_Curso)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PixBx_Qrcode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PixBx_FotoAluno)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private Krypton.Toolkit.KryptonTextBox txt_trienio;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Button btn_GeraQr;
+        private System.Windows.Forms.Button btn_CarregarFt;
+        private Krypton.Toolkit.KryptonButton btn_Guardar;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txt_trienio;
+        private System.Windows.Forms.ComboBox ComBox_Curso;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txt_nome;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txt_numero;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbl_previsualização;
         private Krypton.Toolkit.KryptonPictureBox PixBx_Qrcode;
         private Krypton.Toolkit.KryptonPictureBox PixBx_FotoAluno;
-        private Krypton.Toolkit.KryptonTextBox txt_nome;
-        private Krypton.Toolkit.KryptonComboBox ComBox_Curso;
-        private Krypton.Toolkit.KryptonButton btn_GeraQr;
-        private Krypton.Toolkit.KryptonButton btn_Guardar;
-        private Krypton.Toolkit.KryptonButton btn_CarregarFt;
-        private Krypton.Toolkit.KryptonTextBox txt_numero;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button5;
     }
 }

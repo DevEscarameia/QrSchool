@@ -32,23 +32,33 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.txt_professor = new System.Windows.Forms.Label();
             this.txt_turma = new System.Windows.Forms.Label();
-            this.txt_hora = new System.Windows.Forms.Label();
+            this.txt_horaInicio = new System.Windows.Forms.Label();
             this.txt_quantidade = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.txt_horaFim = new System.Windows.Forms.Label();
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btn_voltar = new Krypton.Toolkit.KryptonButton();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.kryptonButton1 = new Krypton.Toolkit.KryptonButton();
+            this.btn_apagar = new System.Windows.Forms.Button();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.pictureBox6 = new System.Windows.Forms.PictureBox();
+            this.txt_IdRequisiçao = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txt_IdAluno = new System.Windows.Forms.TextBox();
+            this.txt_IdPortatil = new System.Windows.Forms.TextBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox5 = new System.Windows.Forms.PictureBox();
+            this.txt_data = new System.Windows.Forms.Label();
             this.tbl_levantamentos = new Krypton.Toolkit.KryptonDataGridView();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btn_salvarUtilizador = new System.Windows.Forms.Button();
+            this.btn_Levantar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -59,6 +69,10 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_levantamentos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,16 +101,16 @@
             this.txt_turma.TabIndex = 80;
             this.txt_turma.Text = "00";
             // 
-            // txt_hora
+            // txt_horaInicio
             // 
-            this.txt_hora.AutoSize = true;
-            this.txt_hora.ForeColor = System.Drawing.Color.Black;
-            this.txt_hora.Location = new System.Drawing.Point(67, 12);
-            this.txt_hora.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.txt_hora.Name = "txt_hora";
-            this.txt_hora.Size = new System.Drawing.Size(37, 16);
-            this.txt_hora.TabIndex = 81;
-            this.txt_hora.Text = "Hora";
+            this.txt_horaInicio.AutoSize = true;
+            this.txt_horaInicio.ForeColor = System.Drawing.Color.Black;
+            this.txt_horaInicio.Location = new System.Drawing.Point(67, 4);
+            this.txt_horaInicio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_horaInicio.Name = "txt_horaInicio";
+            this.txt_horaInicio.Size = new System.Drawing.Size(37, 16);
+            this.txt_horaInicio.TabIndex = 81;
+            this.txt_horaInicio.Text = "Hora";
             // 
             // txt_quantidade
             // 
@@ -109,14 +123,13 @@
             this.txt_quantidade.Size = new System.Drawing.Size(21, 16);
             this.txt_quantidade.TabIndex = 81;
             this.txt_quantidade.Text = "00";
-            this.txt_quantidade.Click += new System.EventHandler(this.label6_Click);
             // 
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.Controls.Add(this.pictureBox2);
             this.panel3.Controls.Add(this.txt_quantidade);
-            this.panel3.Location = new System.Drawing.Point(936, 70);
+            this.panel3.Location = new System.Drawing.Point(951, 70);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(133, 57);
@@ -139,7 +152,7 @@
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.Controls.Add(this.pictureBox3);
             this.panel4.Controls.Add(this.txt_turma);
-            this.panel4.Location = new System.Drawing.Point(729, 70);
+            this.panel4.Location = new System.Drawing.Point(792, 70);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(155, 57);
@@ -160,13 +173,25 @@
             // panel5
             // 
             this.panel5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel5.Controls.Add(this.txt_horaFim);
             this.panel5.Controls.Add(this.pictureBox4);
-            this.panel5.Controls.Add(this.txt_hora);
-            this.panel5.Location = new System.Drawing.Point(400, 70);
+            this.panel5.Controls.Add(this.txt_horaInicio);
+            this.panel5.Location = new System.Drawing.Point(611, 70);
             this.panel5.Margin = new System.Windows.Forms.Padding(4);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(300, 57);
+            this.panel5.Size = new System.Drawing.Size(173, 57);
             this.panel5.TabIndex = 83;
+            // 
+            // txt_horaFim
+            // 
+            this.txt_horaFim.AutoSize = true;
+            this.txt_horaFim.ForeColor = System.Drawing.Color.Black;
+            this.txt_horaFim.Location = new System.Drawing.Point(67, 37);
+            this.txt_horaFim.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_horaFim.Name = "txt_horaFim";
+            this.txt_horaFim.Size = new System.Drawing.Size(37, 16);
+            this.txt_horaFim.TabIndex = 82;
+            this.txt_horaFim.Text = "Hora";
             // 
             // pictureBox4
             // 
@@ -183,10 +208,10 @@
             // 
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.txt_professor);
-            this.panel2.Location = new System.Drawing.Point(29, 70);
+            this.panel2.Location = new System.Drawing.Point(4, 70);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(337, 57);
+            this.panel2.Size = new System.Drawing.Size(262, 57);
             this.panel2.TabIndex = 82;
             // 
             // pictureBox1
@@ -202,12 +227,12 @@
             // 
             // btn_voltar
             // 
-            this.btn_voltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_voltar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btn_voltar.CornerRoundingRadius = 20F;
-            this.btn_voltar.Location = new System.Drawing.Point(774, 517);
+            this.btn_voltar.Location = new System.Drawing.Point(22, 543);
             this.btn_voltar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_voltar.Name = "btn_voltar";
-            this.btn_voltar.Size = new System.Drawing.Size(247, 62);
+            this.btn_voltar.Size = new System.Drawing.Size(165, 46);
             this.btn_voltar.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.btn_voltar.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.btn_voltar.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
@@ -229,11 +254,16 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel6.Controls.Add(this.kryptonButton1);
+            this.panel6.Controls.Add(this.btn_apagar);
+            this.panel6.Controls.Add(this.panel7);
+            this.panel6.Controls.Add(this.label2);
+            this.panel6.Controls.Add(this.label1);
+            this.panel6.Controls.Add(this.txt_IdAluno);
+            this.panel6.Controls.Add(this.txt_IdPortatil);
+            this.panel6.Controls.Add(this.panel1);
             this.panel6.Controls.Add(this.tbl_levantamentos);
-            this.panel6.Controls.Add(this.button3);
-            this.panel6.Controls.Add(this.button2);
-            this.panel6.Controls.Add(this.button1);
-            this.panel6.Controls.Add(this.btn_salvarUtilizador);
+            this.panel6.Controls.Add(this.btn_Levantar);
             this.panel6.Controls.Add(this.panel3);
             this.panel6.Controls.Add(this.btn_voltar);
             this.panel6.Controls.Add(this.panel4);
@@ -243,9 +273,169 @@
             this.panel6.Location = new System.Drawing.Point(13, 13);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(1087, 616);
+            this.panel6.Size = new System.Drawing.Size(1090, 616);
             this.panel6.TabIndex = 90;
-            this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // kryptonButton1
+            // 
+            this.kryptonButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.kryptonButton1.CornerRoundingRadius = 20F;
+            this.kryptonButton1.Location = new System.Drawing.Point(195, 543);
+            this.kryptonButton1.Margin = new System.Windows.Forms.Padding(4);
+            this.kryptonButton1.Name = "kryptonButton1";
+            this.kryptonButton1.Size = new System.Drawing.Size(165, 46);
+            this.kryptonButton1.StateCommon.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.kryptonButton1.StateCommon.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.kryptonButton1.StateCommon.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
+            | Krypton.Toolkit.PaletteDrawBorders.Left) 
+            | Krypton.Toolkit.PaletteDrawBorders.Right)));
+            this.kryptonButton1.StateCommon.Border.Rounding = 20F;
+            this.kryptonButton1.StateCommon.Content.ShortText.Color1 = System.Drawing.Color.Gray;
+            this.kryptonButton1.StateCommon.Content.ShortText.Color2 = System.Drawing.Color.Gray;
+            this.kryptonButton1.StateCommon.Content.ShortText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.kryptonButton1.TabIndex = 120;
+            this.kryptonButton1.TabStop = false;
+            this.kryptonButton1.Values.Text = "Entregas";
+            this.kryptonButton1.Click += new System.EventHandler(this.btn_Entregas_Click);
+            // 
+            // btn_apagar
+            // 
+            this.btn_apagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_apagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_apagar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_apagar.FlatAppearance.BorderSize = 0;
+            this.btn_apagar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.btn_apagar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_apagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_apagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_apagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_apagar.ForeColor = System.Drawing.Color.White;
+            this.btn_apagar.Location = new System.Drawing.Point(901, 474);
+            this.btn_apagar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_apagar.Name = "btn_apagar";
+            this.btn_apagar.Size = new System.Drawing.Size(165, 46);
+            this.btn_apagar.TabIndex = 119;
+            this.btn_apagar.Text = "Apagar";
+            this.btn_apagar.UseVisualStyleBackColor = false;
+            this.btn_apagar.Click += new System.EventHandler(this.btn_apagar_Click);
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.pictureBox6);
+            this.panel7.Controls.Add(this.txt_IdRequisiçao);
+            this.panel7.Location = new System.Drawing.Point(462, 70);
+            this.panel7.Margin = new System.Windows.Forms.Padding(4);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(145, 57);
+            this.panel7.TabIndex = 85;
+            // 
+            // pictureBox6
+            // 
+            this.pictureBox6.Image = global::app.Properties.Resources._1eb182f7_317c_4961_b1f0_48fa5e72c438_removebg_preview1;
+            this.pictureBox6.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox6.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox6.Name = "pictureBox6";
+            this.pictureBox6.Size = new System.Drawing.Size(55, 49);
+            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox6.TabIndex = 80;
+            this.pictureBox6.TabStop = false;
+            // 
+            // txt_IdRequisiçao
+            // 
+            this.txt_IdRequisiçao.AutoSize = true;
+            this.txt_IdRequisiçao.ForeColor = System.Drawing.Color.Black;
+            this.txt_IdRequisiçao.Location = new System.Drawing.Point(67, 20);
+            this.txt_IdRequisiçao.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_IdRequisiçao.Name = "txt_IdRequisiçao";
+            this.txt_IdRequisiçao.Size = new System.Drawing.Size(0, 16);
+            this.txt_IdRequisiçao.TabIndex = 81;
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(898, 258);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(54, 18);
+            this.label2.TabIndex = 116;
+            this.label2.Text = "Portatil";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(898, 208);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.TabIndex = 115;
+            this.label1.Text = "Aluno";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txt_IdAluno
+            // 
+            this.txt_IdAluno.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_IdAluno.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_IdAluno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_IdAluno.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_IdAluno.Location = new System.Drawing.Point(900, 227);
+            this.txt_IdAluno.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_IdAluno.Name = "txt_IdAluno";
+            this.txt_IdAluno.Size = new System.Drawing.Size(165, 24);
+            this.txt_IdAluno.TabIndex = 1;
+            this.txt_IdAluno.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_IdAluno_KeyPress);
+            // 
+            // txt_IdPortatil
+            // 
+            this.txt_IdPortatil.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.txt_IdPortatil.BackColor = System.Drawing.SystemColors.Window;
+            this.txt_IdPortatil.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_IdPortatil.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_IdPortatil.Location = new System.Drawing.Point(900, 277);
+            this.txt_IdPortatil.Margin = new System.Windows.Forms.Padding(4);
+            this.txt_IdPortatil.Name = "txt_IdPortatil";
+            this.txt_IdPortatil.Size = new System.Drawing.Size(165, 24);
+            this.txt_IdPortatil.TabIndex = 2;
+            this.txt_IdPortatil.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_IdPortatil_KeyPress);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.pictureBox5);
+            this.panel1.Controls.Add(this.txt_data);
+            this.panel1.Location = new System.Drawing.Point(274, 70);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(184, 57);
+            this.panel1.TabIndex = 84;
+            // 
+            // pictureBox5
+            // 
+            this.pictureBox5.Image = global::app.Properties.Resources.calendar;
+            this.pictureBox5.Location = new System.Drawing.Point(4, 4);
+            this.pictureBox5.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox5.Name = "pictureBox5";
+            this.pictureBox5.Size = new System.Drawing.Size(55, 49);
+            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox5.TabIndex = 80;
+            this.pictureBox5.TabStop = false;
+            // 
+            // txt_data
+            // 
+            this.txt_data.AutoSize = true;
+            this.txt_data.ForeColor = System.Drawing.Color.Black;
+            this.txt_data.Location = new System.Drawing.Point(67, 20);
+            this.txt_data.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.txt_data.Name = "txt_data";
+            this.txt_data.Size = new System.Drawing.Size(0, 16);
+            this.txt_data.TabIndex = 81;
             // 
             // tbl_levantamentos
             // 
@@ -272,7 +462,7 @@
             this.tbl_levantamentos.GridStyles.StyleDataCells = Krypton.Toolkit.GridStyle.Sheet;
             this.tbl_levantamentos.GridStyles.StyleRow = Krypton.Toolkit.GridStyle.Sheet;
             this.tbl_levantamentos.HideOuterBorders = true;
-            this.tbl_levantamentos.Location = new System.Drawing.Point(29, 152);
+            this.tbl_levantamentos.Location = new System.Drawing.Point(22, 152);
             this.tbl_levantamentos.Margin = new System.Windows.Forms.Padding(4);
             this.tbl_levantamentos.MultiSelect = false;
             this.tbl_levantamentos.Name = "tbl_levantamentos";
@@ -282,104 +472,50 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             this.tbl_levantamentos.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.tbl_levantamentos.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightGray;
             this.tbl_levantamentos.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbl_levantamentos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tbl_levantamentos.ShowEditingIcon = false;
-            this.tbl_levantamentos.Size = new System.Drawing.Size(673, 427);
+            this.tbl_levantamentos.Size = new System.Drawing.Size(870, 368);
             this.tbl_levantamentos.StateCommon.Background.Color1 = System.Drawing.Color.Transparent;
             this.tbl_levantamentos.StateCommon.Background.Color2 = System.Drawing.Color.Transparent;
             this.tbl_levantamentos.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.FormMain;
-            this.tbl_levantamentos.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.White;
-            this.tbl_levantamentos.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.White;
-            this.tbl_levantamentos.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.Black;
+            this.tbl_levantamentos.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.Transparent;
+            this.tbl_levantamentos.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.Transparent;
+            this.tbl_levantamentos.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.DimGray;
             this.tbl_levantamentos.StateCommon.DataCell.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.tbl_levantamentos.StateCommon.DataCell.Border.Rounding = 0F;
+            this.tbl_levantamentos.StateCommon.DataCell.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.tbl_levantamentos.StateCommon.DataCell.Content.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.tbl_levantamentos.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.tbl_levantamentos.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.tbl_levantamentos.StateSelected.DataCell.Back.Color1 = System.Drawing.Color.Transparent;
+            this.tbl_levantamentos.StateSelected.DataCell.Back.Color2 = System.Drawing.Color.Transparent;
             this.tbl_levantamentos.TabIndex = 94;
-            this.tbl_levantamentos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbl_Utilizadores_CellContentClick);
+            this.tbl_levantamentos.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.tbl_levantamentos_CellFormatting_1);
             // 
-            // button3
+            // btn_Levantar
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(774, 403);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(247, 62);
-            this.button3.TabIndex = 93;
-            this.button3.Text = "Adicionar";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(774, 318);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(247, 62);
-            this.button2.TabIndex = 92;
-            this.button2.Text = "Adicionar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(774, 236);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(247, 62);
-            this.button1.TabIndex = 91;
-            this.button1.Text = "Adicionar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // btn_salvarUtilizador
-            // 
-            this.btn_salvarUtilizador.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_salvarUtilizador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.btn_salvarUtilizador.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btn_salvarUtilizador.FlatAppearance.BorderSize = 0;
-            this.btn_salvarUtilizador.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
-            this.btn_salvarUtilizador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btn_salvarUtilizador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.btn_salvarUtilizador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_salvarUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvarUtilizador.ForeColor = System.Drawing.Color.White;
-            this.btn_salvarUtilizador.Location = new System.Drawing.Point(774, 152);
-            this.btn_salvarUtilizador.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_salvarUtilizador.Name = "btn_salvarUtilizador";
-            this.btn_salvarUtilizador.Size = new System.Drawing.Size(247, 62);
-            this.btn_salvarUtilizador.TabIndex = 90;
-            this.btn_salvarUtilizador.Text = "Adicionar";
-            this.btn_salvarUtilizador.UseVisualStyleBackColor = false;
+            this.btn_Levantar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_Levantar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_Levantar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_Levantar.FlatAppearance.BorderSize = 0;
+            this.btn_Levantar.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.btn_Levantar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_Levantar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_Levantar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Levantar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Levantar.ForeColor = System.Drawing.Color.White;
+            this.btn_Levantar.Location = new System.Drawing.Point(900, 152);
+            this.btn_Levantar.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Levantar.Name = "btn_Levantar";
+            this.btn_Levantar.Size = new System.Drawing.Size(165, 46);
+            this.btn_Levantar.TabIndex = 90;
+            this.btn_Levantar.Text = "Adicionar";
+            this.btn_Levantar.UseVisualStyleBackColor = false;
+            this.btn_Levantar.Click += new System.EventHandler(this.btn_Levantar_Click);
             // 
             // label5
             // 
@@ -390,16 +526,16 @@
             this.label5.Location = new System.Drawing.Point(24, 26);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(173, 29);
+            this.label5.Size = new System.Drawing.Size(175, 29);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Novo Utilizador";
+            this.label5.Text = "Levantamentos";
             // 
             // Levantamento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.ClientSize = new System.Drawing.Size(1113, 642);
+            this.ClientSize = new System.Drawing.Size(1116, 642);
             this.Controls.Add(this.panel6);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Levantamento";
@@ -419,6 +555,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_levantamentos)).EndInit();
             this.ResumeLayout(false);
 
@@ -427,7 +569,7 @@
         #endregion
         private System.Windows.Forms.Label txt_professor;
         private System.Windows.Forms.Label txt_turma;
-        private System.Windows.Forms.Label txt_hora;
+        private System.Windows.Forms.Label txt_horaInicio;
         private System.Windows.Forms.Label txt_quantidade;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -440,10 +582,20 @@
         private Krypton.Toolkit.KryptonButton btn_voltar;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btn_salvarUtilizador;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_Levantar;
         private Krypton.Toolkit.KryptonDataGridView tbl_levantamentos;
+        private System.Windows.Forms.Label txt_horaFim;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox5;
+        private System.Windows.Forms.Label txt_data;
+        private System.Windows.Forms.TextBox txt_IdAluno;
+        private System.Windows.Forms.TextBox txt_IdPortatil;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.PictureBox pictureBox6;
+        private System.Windows.Forms.Label txt_IdRequisiçao;
+        private System.Windows.Forms.Button btn_apagar;
+        private Krypton.Toolkit.KryptonButton kryptonButton1;
     }
 }

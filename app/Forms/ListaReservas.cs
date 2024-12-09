@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.Entity.Core.Objects;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,105 +15,47 @@ namespace app
     public partial class ListaReservas : Form
     {
         private DataTable originalData;
-        private DataTable currentData;  // Armazena os dados atuais exibidos no DataGridView
+        private DataTable currentData;  
         private Form1 mainForm;
         public ListaReservas(Form1 form1)
         {
             InitializeComponent();
             mainForm = form1;
-            PopularComboBoxTurma();
             PopularComboBoxProfessores();
-            PopularComboBoxDataRequisição();
+            PopularComboBoxHoraFim();
+            PopularComboBoxHoraInicio();
         }
-
-        private void ListaReservas_Load(object sender, EventArgs e)
-        {
-            Tbl_ListaReservas.DataSource = Banco.TodasRequisições();
-            originalData = Banco.TodasRequisições(); // Armazena os dados originais
-            currentData = originalData.Copy();       // Cria uma cópia dos dados originais
-            Tbl_ListaReservas.DataSource = currentData;
-        }
-
-
-        private void PopularComboBoxDataRequisição()
+        public void PopularComboBoxProfessores()
         {
             try
             {
-                DataTable dtData = Banco.ObterDataRequisição();
-                ComBox_Data.Items.Clear();
-
-                if (dtData != null && dtData.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dtData.Rows)
-                    {
-                        // Obtenha a data do banco de dados
-                        DateTime data = Convert.ToDateTime(row["T_DATAREQUISIÇÃO"]);
-
-                        // Formate a data para exibir apenas a parte da data (sem a parte da hora)
-                        string dataFormatada = data.ToString("yyyy-MM-dd");
-
-                        // Adicione a data formatada à ComboBox
-                        ComBox_Data.Items.Add(dataFormatada);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao obter as Datas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void PopularComboBoxProfessores()
-        {
-            try
-            {
-                DataTable dtProfessor = Banco.ObterProfessores();
-                ComBox_Professor.Items.Clear();
-
-                if (dtProfessor != null && dtProfessor.Rows.Count > 0)
-                {
-                    foreach (DataRow row in dtProfessor.Rows)
-                    {
-                        // Obtenha a data do banco de dados
-                        ComBox_Professor.Items.Add(row["T_NOMEPROFESSOR"]);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao obter os Professores: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        private void PopularComboBoxTurma()
-        {
-            try
-            {
-                // Chama o método para obter as Turmas
-                DataTable dtTurmas = Banco.ObterTurmas();
+                // Chama o método para obter os professores
+                DataTable dtProfessores = Banco.ObterProfessores();
 
                 // Limpa a ComboBox antes de adicionar novos itens
-                ComBox_Turmas.Items.Clear();
+                ComBox_Professor.Items.Clear();
 
-                // Verifica se há turmas retornadas
-                if (dtTurmas != null && dtTurmas.Rows.Count > 0)
+                // Verifica se há professores retornados
+                if (dtProfessores != null && dtProfessores.Rows.Count > 0)
                 {
-                    // Adiciona cada nome de turma à ComboBox
-                    foreach (DataRow row in dtTurmas.Rows)
+                    // Adiciona cada nome de professor à ComboBox
+                    foreach (DataRow row in dtProfessores.Rows)
                     {
-                        ComBox_Turmas.Items.Add(row["T_TURMA"].ToString());
+                        ComBox_Professor.Items.Add(row["T_NOMEPROFESSOR"].ToString());
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Erro ao obter as Turmas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Erro ao obter os professores: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void ComBox_Turmas_SelectedIndexChanged(object sender, EventArgs e)
+        private void ListaReservas_Load(object sender, EventArgs e)
         {
-            string turmaSelecionada = ComBox_Turmas.SelectedItem.ToString();
-            DataTable dtReservas = Banco.ObterReservasPorTurma(turmaSelecionada);
-            AtualizarDataGridView(dtReservas);
+            originalData = Banco.TodasRequisições(); 
+            currentData = originalData.Copy();       
+            Tbl_ListaReservas.DataSource = currentData;
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -120,26 +63,9 @@ namespace app
             this.Close();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            currentData = originalData.Copy();  // Restaura os dados atuais para os dados originais
-            Tbl_ListaReservas.DataSource = currentData;
-            ComBox_Data.Text = "Data";
-            ComBox_Turmas.Text = "Turma";
-            ComBox_Professor.Text = "Professor";
-            ComBox_Horario.Text = "Horário";
-        }
-
-        private void ComBox_Data_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string dataSelecionada = ComBox_Data.SelectedItem.ToString();
-            DataTable dtReservas = Banco.ObterReservasPorData(dataSelecionada);
-            AtualizarDataGridView(dtReservas);
-        }
-
         private void btn_apagar_Click(object sender, EventArgs e)
         {
-            string idReserva = Tbl_ListaReservas.SelectedRows[0].Cells["N_IDREQUISIÇÃO"].Value.ToString();
+            string idReserva = Tbl_ListaReservas.SelectedRows[0].Cells["ID"].Value.ToString();
             DialogResult res = MessageBox.Show("Apagar reserva?", "Apagar", MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
             {
@@ -148,19 +74,60 @@ namespace app
             }
         }
 
-        private void ComBox_Horario_SelectedIndexChanged(object sender, EventArgs e)
+        public void PopularComboBoxHoraInicio()
         {
-            string horaSelecionada = ComBox_Horario.SelectedItem.ToString();
-            DataTable dtReservas = Banco.ObterReservasPorHora(horaSelecionada);
-            AtualizarDataGridView(dtReservas);
+            try
+            {
+                DataTable dtHoraInicio = Banco.ObterHorarioInicio();
+                ComBox_HInicio.Items.Clear();
+
+                if (dtHoraInicio != null && dtHoraInicio.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtHoraInicio.Rows)
+                    {
+                        // Converte o valor para exibir apenas a hora e os minutos
+                        string horaFormatada = DateTime.Parse(row["T_HORAINICIO"].ToString()).ToString("HH:mm");
+                        ComBox_HInicio.Items.Add(horaFormatada);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma hora de início encontrada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as horas de início: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        private void ComBox_Professor_SelectedIndexChanged(object sender, EventArgs e)
+        public void PopularComboBoxHoraFim()
         {
-            string professorSelecionado = ComBox_Professor.SelectedItem.ToString();
-            DataTable dtReservas = Banco.ObterReservasPorProfessor(professorSelecionado);
-            AtualizarDataGridView(dtReservas);
+            try
+            {
+                DataTable dtHoraFim = Banco.ObterHorarioFim();
+                ComBox_HFim.Items.Clear();
+
+                if (dtHoraFim != null && dtHoraFim.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtHoraFim.Rows)
+                    {
+                        string horaFormatada = DateTime.Parse(row["T_HORAFIM"].ToString()).ToString("HH:mm");
+                        ComBox_HFim.Items.Add(horaFormatada);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma hora de fim encontrada.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as horas de fim: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
+
         private void AtualizarDataGridView(DataTable dt)
         {
             // Atualiza a exibição dos dados
@@ -175,7 +142,7 @@ namespace app
                 DataRow selectedRow = ((DataRowView)Tbl_ListaReservas.Rows[e.RowIndex].DataBoundItem).Row;
 
                 // Passa os dados para o formulário de levantamento
-                var form = new Levantamento(mainForm,selectedRow);
+                var form = new Levantamento(mainForm, selectedRow);
                 openChildForm(form);
             }
         }
@@ -193,6 +160,71 @@ namespace app
             childForm.BringToFront();
             childForm.Show();
         }
+
+        private void btn_salvar_Click(object sender, EventArgs e)
+        {
+            // Validação dos campos
+            if (string.IsNullOrWhiteSpace(txt_Id.Text) || string.IsNullOrWhiteSpace(txt_turma.Text) || string.IsNullOrWhiteSpace(txt_NPortateis.Text))
+            {
+                MessageBox.Show("Por favor, preencha todos os campos obrigatórios.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int linha = Tbl_ListaReservas.SelectedRows[0].Index;
+            Requisições r = new Requisições
+            {
+                N_IDREQUISIÇÃO = Convert.ToInt32(txt_Id.Text),
+                T_PROFESSORRESPONSAVEL = ComBox_Professor.SelectedItem.ToString(),
+                T_HORAINICIO = ComBox_HInicio.SelectedItem.ToString(),
+                T_HORAFIM = ComBox_HFim.SelectedItem.ToString(),
+                T_TURMA = txt_turma.Text,
+                N_NºPORTATEIS = Convert.ToInt32(txt_NPortateis.Text),
+                T_DATAREQUISIÇÃO = Tp_Data.Value
+            };
+
+            try
+            {
+                Banco.AtualizarRequisições(r);
+                MessageBox.Show("Reserva atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Tbl_ListaReservas.DataSource = Banco.TodasRequisições();
+                Tbl_ListaReservas.CurrentCell = Tbl_ListaReservas[0, linha];
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao atualizar a reserva: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void Tbl_ListaReservas_SelectionChanged(object sender, EventArgs e)
+        {
+            DataGridView dgv = (DataGridView)sender;
+
+            
+            if (dgv.SelectedRows.Count > 0)
+            {
+ 
+               
+                string vid = dgv.SelectedRows[0].Cells[0].Value.ToString();
+
+               
+                DataTable dt = Banco.ObterReservas();
+
+                // Procure na DataTable pelo utilizador com o ID correspondente
+                DataRow[] rows = dt.Select("N_IDREQUISIÇÃO = '" + vid + "'");
+
+                if (rows.Length > 0)
+                {
+                    var selectedRow = (DataRowView)Tbl_ListaReservas.SelectedRows[0].DataBoundItem;
+                    txt_Id.Text = selectedRow["ID"].ToString();
+                    ComBox_Professor.Text = selectedRow["Professor"].ToString();
+                    ComBox_HInicio.Text = selectedRow["Inicio"].ToString();
+                    ComBox_HFim.Text = selectedRow["Fim"].ToString();
+                    txt_turma.Text = selectedRow["Turma"].ToString();
+                    txt_NPortateis.Text = selectedRow["Portateis"].ToString();
+                    Tp_Data.Value = Convert.ToDateTime(selectedRow["Data"]);
+
+                }
+            }
+        }
     }
 }
-

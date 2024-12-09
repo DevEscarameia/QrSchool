@@ -16,5 +16,6 @@ namespace app
         public string T_CURSO;
         public byte[] I_FTALUNO;
         public byte[] I_QRCODE;
+        public byte[] I_CARTAO;
     }
 }

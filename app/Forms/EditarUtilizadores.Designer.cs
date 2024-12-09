@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel2 = new System.Windows.Forms.Panel();
             this.Tbl_Utilizadores = new Krypton.Toolkit.KryptonDataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -62,11 +61,10 @@
             this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel2.Controls.Add(this.Tbl_Utilizadores);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.panel3);
-            this.panel2.Location = new System.Drawing.Point(13, 30);
+            this.panel2.Location = new System.Drawing.Point(13, 13);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1135, 343);
+            this.panel2.Size = new System.Drawing.Size(1135, 360);
             this.panel2.TabIndex = 83;
             // 
             // Tbl_Utilizadores
@@ -75,11 +73,11 @@
             this.Tbl_Utilizadores.AllowUserToDeleteRows = false;
             this.Tbl_Utilizadores.AllowUserToResizeColumns = false;
             this.Tbl_Utilizadores.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.Tbl_Utilizadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.Tbl_Utilizadores.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.Tbl_Utilizadores.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -94,33 +92,38 @@
             this.Tbl_Utilizadores.GridStyles.StyleDataCells = Krypton.Toolkit.GridStyle.Sheet;
             this.Tbl_Utilizadores.GridStyles.StyleRow = Krypton.Toolkit.GridStyle.Sheet;
             this.Tbl_Utilizadores.HideOuterBorders = true;
-            this.Tbl_Utilizadores.Location = new System.Drawing.Point(29, 73);
+            this.Tbl_Utilizadores.Location = new System.Drawing.Point(29, 79);
             this.Tbl_Utilizadores.Margin = new System.Windows.Forms.Padding(4);
             this.Tbl_Utilizadores.MultiSelect = false;
             this.Tbl_Utilizadores.Name = "Tbl_Utilizadores";
             this.Tbl_Utilizadores.ReadOnly = true;
             this.Tbl_Utilizadores.RowHeadersVisible = false;
             this.Tbl_Utilizadores.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.Tbl_Utilizadores.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.Tbl_Utilizadores.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.Tbl_Utilizadores.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightGray;
             this.Tbl_Utilizadores.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Tbl_Utilizadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Tbl_Utilizadores.ShowEditingIcon = false;
-            this.Tbl_Utilizadores.Size = new System.Drawing.Size(1070, 238);
+            this.Tbl_Utilizadores.Size = new System.Drawing.Size(1070, 255);
             this.Tbl_Utilizadores.StateCommon.Background.Color1 = System.Drawing.Color.Transparent;
             this.Tbl_Utilizadores.StateCommon.Background.Color2 = System.Drawing.Color.Transparent;
             this.Tbl_Utilizadores.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.FormMain;
-            this.Tbl_Utilizadores.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.White;
-            this.Tbl_Utilizadores.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.White;
-            this.Tbl_Utilizadores.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.Black;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Back.Color1 = System.Drawing.Color.Transparent;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Back.Color2 = System.Drawing.Color.Transparent;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Border.Color1 = System.Drawing.Color.DimGray;
             this.Tbl_Utilizadores.StateCommon.DataCell.Border.DrawBorders = ((Krypton.Toolkit.PaletteDrawBorders)((((Krypton.Toolkit.PaletteDrawBorders.Top | Krypton.Toolkit.PaletteDrawBorders.Bottom) 
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Tbl_Utilizadores.StateCommon.DataCell.Border.Rounding = 0F;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Content.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.Tbl_Utilizadores.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.Tbl_Utilizadores.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
-            this.Tbl_Utilizadores.TabIndex = 74;
+            this.Tbl_Utilizadores.StateSelected.DataCell.Back.Color1 = System.Drawing.Color.Transparent;
+            this.Tbl_Utilizadores.StateSelected.DataCell.Back.Color2 = System.Drawing.Color.Transparent;
+            this.Tbl_Utilizadores.TabIndex = 122;
             this.Tbl_Utilizadores.SelectionChanged += new System.EventHandler(this.Tbl_Utilizadores_SelectionChanged);
             // 
             // label5
@@ -135,15 +138,6 @@
             this.label5.Size = new System.Drawing.Size(180, 29);
             this.label5.TabIndex = 2;
             this.label5.Text = "Editar Utilizador";
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.panel3.Location = new System.Drawing.Point(0, 368);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1119, 278);
-            this.panel3.TabIndex = 1;
             // 
             // panel4
             // 
@@ -163,21 +157,22 @@
             this.panel4.Controls.Add(this.btn_salvar);
             this.panel4.Controls.Add(this.btn_CarregarFt);
             this.panel4.Controls.Add(this.PixBox_Ftutilizador);
-            this.panel4.Location = new System.Drawing.Point(14, 399);
+            this.panel4.Location = new System.Drawing.Point(13, 386);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1135, 268);
+            this.panel4.Size = new System.Drawing.Size(1135, 296);
             this.panel4.TabIndex = 84;
             // 
             // txt_Id
             // 
             this.txt_Id.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_Id.BackColor = System.Drawing.Color.LightGray;
+            this.txt_Id.BackColor = System.Drawing.SystemColors.Window;
             this.txt_Id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Id.Location = new System.Drawing.Point(272, 42);
+            this.txt_Id.Location = new System.Drawing.Point(261, 74);
             this.txt_Id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Id.Name = "txt_Id";
+            this.txt_Id.ReadOnly = true;
             this.txt_Id.Size = new System.Drawing.Size(42, 24);
             this.txt_Id.TabIndex = 27;
             // 
@@ -188,7 +183,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(209, 50);
+            this.label1.Location = new System.Drawing.Point(198, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 18);
@@ -205,7 +200,7 @@
             "1",
             "2",
             "3"});
-            this.ComBox_nivel.Location = new System.Drawing.Point(272, 162);
+            this.ComBox_nivel.Location = new System.Drawing.Point(261, 194);
             this.ComBox_nivel.Margin = new System.Windows.Forms.Padding(4);
             this.ComBox_nivel.Name = "ComBox_nivel";
             this.ComBox_nivel.Size = new System.Drawing.Size(304, 26);
@@ -218,7 +213,7 @@
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(209, 165);
+            this.label6.Location = new System.Drawing.Point(198, 197);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(44, 18);
@@ -228,10 +223,10 @@
             // txt_nomeUtilizador
             // 
             this.txt_nomeUtilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.txt_nomeUtilizador.BackColor = System.Drawing.Color.LightGray;
+            this.txt_nomeUtilizador.BackColor = System.Drawing.SystemColors.Window;
             this.txt_nomeUtilizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_nomeUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nomeUtilizador.Location = new System.Drawing.Point(272, 80);
+            this.txt_nomeUtilizador.Location = new System.Drawing.Point(261, 112);
             this.txt_nomeUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nomeUtilizador.Name = "txt_nomeUtilizador";
             this.txt_nomeUtilizador.Size = new System.Drawing.Size(304, 24);
@@ -244,7 +239,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(209, 124);
+            this.label7.Location = new System.Drawing.Point(198, 156);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(54, 18);
@@ -255,7 +250,7 @@
             // 
             this.txt_Senha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Senha.Location = new System.Drawing.Point(272, 121);
+            this.txt_Senha.Location = new System.Drawing.Point(261, 153);
             this.txt_Senha.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.Size = new System.Drawing.Size(256, 24);
@@ -268,7 +263,7 @@
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(209, 83);
+            this.label8.Location = new System.Drawing.Point(198, 115);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 18);
@@ -288,7 +283,7 @@
             this.btn_apagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_apagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_apagar.ForeColor = System.Drawing.Color.White;
-            this.btn_apagar.Location = new System.Drawing.Point(590, 201);
+            this.btn_apagar.Location = new System.Drawing.Point(570, 233);
             this.btn_apagar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_apagar.Name = "btn_apagar";
             this.btn_apagar.Size = new System.Drawing.Size(165, 46);
@@ -309,7 +304,7 @@
             this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salvar.ForeColor = System.Drawing.Color.White;
-            this.btn_salvar.Location = new System.Drawing.Point(417, 201);
+            this.btn_salvar.Location = new System.Drawing.Point(397, 233);
             this.btn_salvar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(165, 46);
@@ -329,7 +324,7 @@
             this.btn_CarregarFt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CarregarFt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CarregarFt.ForeColor = System.Drawing.Color.White;
-            this.btn_CarregarFt.Location = new System.Drawing.Point(842, 155);
+            this.btn_CarregarFt.Location = new System.Drawing.Point(825, 190);
             this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_CarregarFt.Name = "btn_CarregarFt";
             this.btn_CarregarFt.Size = new System.Drawing.Size(109, 28);
@@ -343,7 +338,7 @@
             this.PixBox_Ftutilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PixBox_Ftutilizador.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.PixBox_Ftutilizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(842, 42);
+            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(825, 77);
             this.PixBox_Ftutilizador.Margin = new System.Windows.Forms.Padding(4);
             this.PixBox_Ftutilizador.Name = "PixBox_Ftutilizador";
             this.PixBox_Ftutilizador.Size = new System.Drawing.Size(109, 113);
@@ -375,9 +370,7 @@
 
         #endregion
         private System.Windows.Forms.Panel panel2;
-        private Krypton.Toolkit.KryptonDataGridView Tbl_Utilizadores;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button btn_apagar;
         private System.Windows.Forms.Button btn_salvar;
@@ -391,5 +384,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txt_Senha;
         private System.Windows.Forms.Label label8;
+        private Krypton.Toolkit.KryptonDataGridView Tbl_Utilizadores;
     }
 }

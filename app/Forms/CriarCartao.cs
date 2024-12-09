@@ -9,13 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace app
+namespace app.Forms
 {
     public partial class CriarCartao : Form
     {
-        // Criar uma instância do formulário Form1
-        
-        // Campos
+        // Fields
         public Int32 Id_Cartão;
         public string T_NOME;
         public string N_NUMERO;
@@ -35,111 +33,12 @@ namespace app
             return imagemBytes2;
         }
 
-        // Construtor
         public CriarCartao()
         {
             InitializeComponent();
             txt_trienio.KeyPress += txt_trienio_KeyPress;
             txt_trienio.TextChanged += txt_trienio_TextChanged;
             txt_trienio.MaxLength = 7;
-
-        }
-
-        private void txt_nome_Enter(object sender, EventArgs e)
-        {
-            if (txt_nome.Text == "Nome")
-            {
-                txt_nome.Text = "";
-                txt_nome.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_nome_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-       
-
-        private void txt_nome_Leave(object sender, EventArgs e)
-        {
-            if (txt_nome.Text == "")
-            {
-                txt_nome.Text = "Nome";
-                txt_nome.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_numero_Enter(object sender, EventArgs e)
-        {
-            if (txt_numero.Text == "Número")
-            {
-                txt_numero.Text = "";
-                txt_numero.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_numero_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txt_numero_Leave(object sender, EventArgs e)
-        {
-            if (txt_numero.Text == "")
-            {
-                txt_numero.Text = "Número";
-                txt_numero.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_trienio_Enter(object sender, EventArgs e)
-        {
-            if (txt_trienio.Text == "Triénio")
-            {
-                txt_trienio.Text = "";
-                txt_trienio.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_trienio_KeyDown(object sender, KeyEventArgs e)
-        {
-
-        }
-
-        private void txt_trienio_TextChanged(object sender, EventArgs e)
-        {
-            if (txt_trienio.Text.Length == 4 && txt_trienio.Text[3] != '/')
-            {
-                txt_trienio.Text = txt_trienio.Text.Insert(4, "/");
-                txt_trienio.SelectionStart = txt_trienio.Text.Length;
-            }
-        }
-
-        private void txt_trienio_KeyPress(object sender, KeyPressEventArgs e)
-        {
-             
-        }
-
-        private void txt_trienio_Leave(object sender, EventArgs e)
-        {
-            if (txt_trienio.Text == "")
-            {
-                txt_trienio.Text = "Triénio";
-                txt_trienio.ForeColor = Color.Black;
-            }
-        }
-
-        private void txt_trienio_KeyPress_1(object sender, KeyPressEventArgs e)
-        {
-            if (txt_trienio.Text.Length == 4 && txt_trienio.Text[3] != '/')
-            {
-                txt_trienio.Text = txt_trienio.Text.Insert(4, "/");
-                txt_trienio.SelectionStart = txt_trienio.Text.Length;
-            }
         }
 
         private void btn_CarregarFt_Click(object sender, EventArgs e)
@@ -177,38 +76,41 @@ namespace app
 
         private void btn_GeraQr_Click(object sender, EventArgs e)
         {
-
-            if (txt_nome.Text == "Nome" || txt_numero.Text == "Número" || txt_trienio.Text == "Triénio" || ComBox_Curso.Text == "Curso")
-            {
-                MessageBox.Show("Preencha todos os campos antes de Criar o QRCode.");
-                return;
-            }
-
+            // Monta o texto que será convertido em QR Code
             string textData = $"{txt_nome.Text} {txt_numero.Text} {ComBox_Curso.SelectedItem}";
 
+            // Define o caminho de saída para o arquivo do QR Code
             string outputFilePath = $"C:\\YourFolderPath\\QrCode_{txt_nome.Text}_{txt_numero.Text}.png";
 
-            // Chama o método GerarQRCode
             try
             {
+                // Chama o método para gerar o QR Code
                 CriarQRCode criarQRCode = new CriarQRCode(PixBx_Qrcode);
                 criarQRCode.GerarQRCode(textData, outputFilePath);
 
-                // Carrega os bytes da imagem
-                using (FileStream fs = new FileStream(outputFilePath, FileMode.Open, FileAccess.Read))
+                // Libera a imagem antiga no PictureBox (evita o erro de GDI+)
+                if (PixBx_Qrcode.Image != null)
                 {
-                    imagemBytes2 = new byte[fs.Length];
-                    fs.Read(imagemBytes2, 0, (int)fs.Length);
+                    PixBx_Qrcode.Image.Dispose();
+                    PixBx_Qrcode.Image = null;
                 }
 
-                // Exibe a imagem no PictureBox
-                using (MemoryStream ms = new MemoryStream(imagemBytes2))
+                // Lê os bytes da imagem do QR Code gerada
+                using (FileStream fs = new FileStream(outputFilePath, FileMode.Open, FileAccess.Read))
                 {
-                    PixBx_FotoAluno.Image = Image.FromStream(ms);
+                    byte[] imagemBytes2 = new byte[fs.Length];
+                    fs.Read(imagemBytes2, 0, (int)fs.Length);
+
+                    // Exibe a nova imagem no PictureBox
+                    using (MemoryStream ms = new MemoryStream(imagemBytes2))
+                    {
+                        PixBx_Qrcode.Image = Image.FromStream(ms);
+                    }
                 }
             }
             catch (Exception ex)
             {
+                // Exibe uma mensagem de erro caso algo dê errado
                 MessageBox.Show($"Ocorreu um erro ao gerar o QR code: {ex.Message}");
             }
         }
@@ -234,20 +136,29 @@ namespace app
             FrmPrevisualizarCartão frmPrevisualizarCartão = new FrmPrevisualizarCartão(nome, numero, trienio, curso, ftAluno, qrcode, imagemBytes2);
             frmPrevisualizarCartão.Show();
 
-            // Restaura os valores iniciais nos campos
-            txt_nome.Text = "Nome";
-            txt_numero.Text = "Número";
-            txt_trienio.Text = "Triénio";
-            ComBox_Curso.Text = "Curso";
-            PixBx_FotoAluno.Image = app.Properties.Resources.pessoa;
+
+
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void txt_trienio_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.Close();
+            if (txt_trienio.Text.Length == 4 && txt_trienio.Text[3] != '/')
+            {
+                txt_trienio.Text = txt_trienio.Text.Insert(4, "/");
+                txt_trienio.SelectionStart = txt_trienio.Text.Length;
+            }
         }
 
-        private void txt_numero_TextChanged(object sender, EventArgs e)
+        private void txt_trienio_TextChanged(object sender, EventArgs e)
+        {
+            if (txt_trienio.Text.Length == 4 && txt_trienio.Text[3] != '/')
+            {
+                txt_trienio.Text = txt_trienio.Text.Insert(4, "/");
+                txt_trienio.SelectionStart = txt_trienio.Text.Length;
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

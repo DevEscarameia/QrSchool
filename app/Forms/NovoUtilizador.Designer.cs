@@ -55,7 +55,7 @@
             // panel3
             // 
             this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel3.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel3.Controls.Add(this.btn_Limpar);
             this.panel3.Controls.Add(this.btn_salvarUtilizador);
@@ -68,10 +68,10 @@
             this.panel3.Controls.Add(this.txt_Senha);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(13, 398);
+            this.panel3.Location = new System.Drawing.Point(13, 386);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1135, 268);
+            this.panel3.Size = new System.Drawing.Size(1135, 296);
             this.panel3.TabIndex = 77;
             // 
             // btn_Limpar
@@ -86,11 +86,11 @@
             this.btn_Limpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Limpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Limpar.ForeColor = System.Drawing.Color.White;
-            this.btn_Limpar.Location = new System.Drawing.Point(590, 201);
+            this.btn_Limpar.Location = new System.Drawing.Point(590, 215);
             this.btn_Limpar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Limpar.Name = "btn_Limpar";
             this.btn_Limpar.Size = new System.Drawing.Size(165, 46);
-            this.btn_Limpar.TabIndex = 17;
+            this.btn_Limpar.TabIndex = 9;
             this.btn_Limpar.Text = "Limpar";
             this.btn_Limpar.UseVisualStyleBackColor = false;
             this.btn_Limpar.Click += new System.EventHandler(this.btn_Limpar_Click);
@@ -107,11 +107,11 @@
             this.btn_salvarUtilizador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salvarUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salvarUtilizador.ForeColor = System.Drawing.Color.White;
-            this.btn_salvarUtilizador.Location = new System.Drawing.Point(417, 201);
+            this.btn_salvarUtilizador.Location = new System.Drawing.Point(417, 215);
             this.btn_salvarUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salvarUtilizador.Name = "btn_salvarUtilizador";
             this.btn_salvarUtilizador.Size = new System.Drawing.Size(165, 46);
-            this.btn_salvarUtilizador.TabIndex = 14;
+            this.btn_salvarUtilizador.TabIndex = 8;
             this.btn_salvarUtilizador.Text = "Adicionar";
             this.btn_salvarUtilizador.UseVisualStyleBackColor = false;
             this.btn_salvarUtilizador.Click += new System.EventHandler(this.btn_salvarUtilizador_Click);
@@ -127,11 +127,11 @@
             this.btn_CarregarFt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CarregarFt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_CarregarFt.ForeColor = System.Drawing.Color.White;
-            this.btn_CarregarFt.Location = new System.Drawing.Point(842, 155);
+            this.btn_CarregarFt.Location = new System.Drawing.Point(842, 169);
             this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_CarregarFt.Name = "btn_CarregarFt";
             this.btn_CarregarFt.Size = new System.Drawing.Size(109, 28);
-            this.btn_CarregarFt.TabIndex = 13;
+            this.btn_CarregarFt.TabIndex = 10;
             this.btn_CarregarFt.Text = "Import";
             this.btn_CarregarFt.UseVisualStyleBackColor = false;
             this.btn_CarregarFt.Click += new System.EventHandler(this.btn_CarregarFt_Click_1);
@@ -141,7 +141,7 @@
             this.PixBox_Ftutilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PixBox_Ftutilizador.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.PixBox_Ftutilizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(842, 42);
+            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(842, 56);
             this.PixBox_Ftutilizador.Margin = new System.Windows.Forms.Padding(4);
             this.PixBox_Ftutilizador.Name = "PixBox_Ftutilizador";
             this.PixBox_Ftutilizador.Size = new System.Drawing.Size(109, 113);
@@ -158,7 +158,7 @@
             "1",
             "2",
             "3"});
-            this.ComBox_nivel.Location = new System.Drawing.Point(236, 129);
+            this.ComBox_nivel.Location = new System.Drawing.Point(236, 143);
             this.ComBox_nivel.Margin = new System.Windows.Forms.Padding(4);
             this.ComBox_nivel.Name = "ComBox_nivel";
             this.ComBox_nivel.Size = new System.Drawing.Size(304, 26);
@@ -171,7 +171,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(173, 132);
+            this.label4.Location = new System.Drawing.Point(173, 146);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 18);
@@ -182,7 +182,7 @@
             // 
             this.txt_nomeUtilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_nomeUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nomeUtilizador.Location = new System.Drawing.Point(236, 42);
+            this.txt_nomeUtilizador.Location = new System.Drawing.Point(236, 56);
             this.txt_nomeUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nomeUtilizador.Name = "txt_nomeUtilizador";
             this.txt_nomeUtilizador.Size = new System.Drawing.Size(304, 24);
@@ -195,7 +195,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(173, 89);
+            this.label3.Location = new System.Drawing.Point(173, 103);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 18);
@@ -206,11 +206,11 @@
             // 
             this.txt_Senha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Senha.Location = new System.Drawing.Point(236, 86);
+            this.txt_Senha.Location = new System.Drawing.Point(236, 100);
             this.txt_Senha.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.Size = new System.Drawing.Size(256, 24);
-            this.txt_Senha.TabIndex = 3;
+            this.txt_Senha.TabIndex = 6;
             // 
             // label2
             // 
@@ -219,7 +219,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(173, 45);
+            this.label2.Location = new System.Drawing.Point(173, 59);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 18);
@@ -244,10 +244,10 @@
             this.panel1.Controls.Add(this.Tbl_Utilizadores);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(13, 30);
+            this.panel1.Location = new System.Drawing.Point(13, 13);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1135, 343);
+            this.panel1.Size = new System.Drawing.Size(1135, 360);
             this.panel1.TabIndex = 78;
             // 
             // Tbl_Utilizadores
@@ -288,7 +288,7 @@
             this.Tbl_Utilizadores.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.Tbl_Utilizadores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Tbl_Utilizadores.ShowEditingIcon = false;
-            this.Tbl_Utilizadores.Size = new System.Drawing.Size(1070, 238);
+            this.Tbl_Utilizadores.Size = new System.Drawing.Size(1070, 255);
             this.Tbl_Utilizadores.StateCommon.Background.Color1 = System.Drawing.Color.Transparent;
             this.Tbl_Utilizadores.StateCommon.Background.Color2 = System.Drawing.Color.Transparent;
             this.Tbl_Utilizadores.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.FormMain;
@@ -299,9 +299,12 @@
             | Krypton.Toolkit.PaletteDrawBorders.Left) 
             | Krypton.Toolkit.PaletteDrawBorders.Right)));
             this.Tbl_Utilizadores.StateCommon.DataCell.Border.Rounding = 0F;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Content.TextH = Krypton.Toolkit.PaletteRelativeAlign.Center;
+            this.Tbl_Utilizadores.StateCommon.DataCell.Content.TextV = Krypton.Toolkit.PaletteRelativeAlign.Center;
             this.Tbl_Utilizadores.StateCommon.HeaderColumn.Back.Color1 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.Tbl_Utilizadores.StateCommon.HeaderColumn.Back.Color2 = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.Tbl_Utilizadores.TabIndex = 74;
+            this.Tbl_Utilizadores.TabStop = false;
             // 
             // label5
             // 

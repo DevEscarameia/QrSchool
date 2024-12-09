@@ -94,11 +94,11 @@ namespace app
 
         private void AtualizarTabelaUtilizadores()
         {
-       
+
             // Defina a fonte de dados
             Tbl_Utilizadores.DataSource = Banco.TodosUtilizadores();
 
-           
+
 
         }
 
@@ -126,7 +126,7 @@ namespace app
 
 
 
-       
+
 
         private void btn_Limpar_Click(object sender, EventArgs e)
         {

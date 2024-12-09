@@ -37,24 +37,25 @@
             this.button3 = new System.Windows.Forms.Button();
             this.btn_colunas = new System.Windows.Forms.Button();
             this.btn_computadores = new System.Windows.Forms.Button();
+            this.btnEquipamentos = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.paneLManutençao = new System.Windows.Forms.Panel();
             this.btn_GerenciarUtilizadores = new System.Windows.Forms.Button();
             this.btn_NovoUtilizador = new System.Windows.Forms.Button();
+            this.btnTools = new System.Windows.Forms.Button();
             this.panelReservas = new System.Windows.Forms.Panel();
+            this.btn_historico = new System.Windows.Forms.Button();
             this.btn_ListaReservas = new System.Windows.Forms.Button();
             this.btn_RegistarReservas = new System.Windows.Forms.Button();
+            this.btnReservas = new System.Windows.Forms.Button();
             this.panelCartoes = new System.Windows.Forms.Panel();
             this.btn_listaCartoes = new System.Windows.Forms.Button();
             this.btn_criar = new System.Windows.Forms.Button();
+            this.btn_Cartoes = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPrincipal = new System.Windows.Forms.Panel();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
-            this.btnEquipamentos = new System.Windows.Forms.Button();
-            this.btnExit = new System.Windows.Forms.Button();
-            this.btnTools = new System.Windows.Forms.Button();
-            this.btnReservas = new System.Windows.Forms.Button();
-            this.btn_Cartoes = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel4.SuspendLayout();
             this.panelSideMenu.SuspendLayout();
             this.panel_equipamentos.SuspendLayout();
@@ -62,9 +63,9 @@
             this.panelReservas.SuspendLayout();
             this.panelCartoes.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelPrincipal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_NomeUtilizador
@@ -137,7 +138,7 @@
             this.panel_equipamentos.Controls.Add(this.btn_colunas);
             this.panel_equipamentos.Controls.Add(this.btn_computadores);
             this.panel_equipamentos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_equipamentos.Location = new System.Drawing.Point(0, 709);
+            this.panel_equipamentos.Location = new System.Drawing.Point(0, 755);
             this.panel_equipamentos.Margin = new System.Windows.Forms.Padding(4);
             this.panel_equipamentos.Name = "panel_equipamentos";
             this.panel_equipamentos.Size = new System.Drawing.Size(225, 148);
@@ -179,14 +180,15 @@
             this.btn_colunas.Text = "Colunas";
             this.btn_colunas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_colunas.UseVisualStyleBackColor = false;
+            this.btn_colunas.Click += new System.EventHandler(this.btn_colunas_Click);
             // 
             // btn_computadores
             // 
             this.btn_computadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_computadores.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_computadores.FlatAppearance.BorderSize = 0;
-            this.btn_computadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_computadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_computadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_computadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_computadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_computadores.ForeColor = System.Drawing.Color.White;
             this.btn_computadores.Location = new System.Drawing.Point(0, 0);
@@ -200,16 +202,61 @@
             this.btn_computadores.UseVisualStyleBackColor = false;
             this.btn_computadores.Click += new System.EventHandler(this.btn_computadores_Click);
             // 
+            // btnEquipamentos
+            // 
+            this.btnEquipamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
+            this.btnEquipamentos.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnEquipamentos.FlatAppearance.BorderSize = 0;
+            this.btnEquipamentos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnEquipamentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnEquipamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEquipamentos.ForeColor = System.Drawing.Color.White;
+            this.btnEquipamentos.Image = global::app.Properties.Resources.icons8_computer_30;
+            this.btnEquipamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEquipamentos.Location = new System.Drawing.Point(0, 700);
+            this.btnEquipamentos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnEquipamentos.Name = "btnEquipamentos";
+            this.btnEquipamentos.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.btnEquipamentos.Size = new System.Drawing.Size(225, 55);
+            this.btnEquipamentos.TabIndex = 10;
+            this.btnEquipamentos.Text = "Equipamentos";
+            this.btnEquipamentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEquipamentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEquipamentos.UseVisualStyleBackColor = false;
+            this.btnEquipamentos.Click += new System.EventHandler(this.btnEquipamentos_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnExit.FlatAppearance.BorderSize = 0;
+            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnExit.ForeColor = System.Drawing.Color.White;
+            this.btnExit.Image = global::app.Properties.Resources.sair;
+            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.Location = new System.Drawing.Point(0, 903);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.btnExit.Size = new System.Drawing.Size(225, 55);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "  Exit";
+            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
             // paneLManutençao
             // 
             this.paneLManutençao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.paneLManutençao.Controls.Add(this.btn_GerenciarUtilizadores);
             this.paneLManutençao.Controls.Add(this.btn_NovoUtilizador);
             this.paneLManutençao.Dock = System.Windows.Forms.DockStyle.Top;
-            this.paneLManutençao.Location = new System.Drawing.Point(0, 553);
+            this.paneLManutençao.Location = new System.Drawing.Point(0, 602);
             this.paneLManutençao.Margin = new System.Windows.Forms.Padding(4);
             this.paneLManutençao.Name = "paneLManutençao";
-            this.paneLManutençao.Size = new System.Drawing.Size(225, 101);
+            this.paneLManutençao.Size = new System.Drawing.Size(225, 98);
             this.paneLManutençao.TabIndex = 7;
             // 
             // btn_GerenciarUtilizadores
@@ -217,8 +264,8 @@
             this.btn_GerenciarUtilizadores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_GerenciarUtilizadores.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_GerenciarUtilizadores.FlatAppearance.BorderSize = 0;
-            this.btn_GerenciarUtilizadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_GerenciarUtilizadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_GerenciarUtilizadores.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_GerenciarUtilizadores.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_GerenciarUtilizadores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_GerenciarUtilizadores.ForeColor = System.Drawing.Color.White;
             this.btn_GerenciarUtilizadores.Location = new System.Drawing.Point(0, 49);
@@ -237,8 +284,8 @@
             this.btn_NovoUtilizador.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_NovoUtilizador.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_NovoUtilizador.FlatAppearance.BorderSize = 0;
-            this.btn_NovoUtilizador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_NovoUtilizador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_NovoUtilizador.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_NovoUtilizador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_NovoUtilizador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_NovoUtilizador.ForeColor = System.Drawing.Color.White;
             this.btn_NovoUtilizador.Location = new System.Drawing.Point(0, 0);
@@ -252,25 +299,69 @@
             this.btn_NovoUtilizador.UseVisualStyleBackColor = false;
             this.btn_NovoUtilizador.Click += new System.EventHandler(this.btn_NovoUtilizador_Click);
             // 
+            // btnTools
+            // 
+            this.btnTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
+            this.btnTools.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTools.FlatAppearance.BorderSize = 0;
+            this.btnTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnTools.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTools.ForeColor = System.Drawing.Color.White;
+            this.btnTools.Image = global::app.Properties.Resources.definicoes;
+            this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTools.Location = new System.Drawing.Point(0, 547);
+            this.btnTools.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.btnTools.Size = new System.Drawing.Size(225, 55);
+            this.btnTools.TabIndex = 6;
+            this.btnTools.Text = " Manutenção";
+            this.btnTools.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTools.UseVisualStyleBackColor = false;
+            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
+            // 
             // panelReservas
             // 
             this.panelReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
+            this.panelReservas.Controls.Add(this.btn_historico);
             this.panelReservas.Controls.Add(this.btn_ListaReservas);
             this.panelReservas.Controls.Add(this.btn_RegistarReservas);
             this.panelReservas.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelReservas.Location = new System.Drawing.Point(0, 400);
             this.panelReservas.Margin = new System.Windows.Forms.Padding(4);
             this.panelReservas.Name = "panelReservas";
-            this.panelReservas.Size = new System.Drawing.Size(225, 98);
+            this.panelReservas.Size = new System.Drawing.Size(225, 147);
             this.panelReservas.TabIndex = 4;
+            // 
+            // btn_historico
+            // 
+            this.btn_historico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
+            this.btn_historico.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_historico.FlatAppearance.BorderSize = 0;
+            this.btn_historico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_historico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btn_historico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_historico.ForeColor = System.Drawing.Color.White;
+            this.btn_historico.Location = new System.Drawing.Point(0, 98);
+            this.btn_historico.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_historico.Name = "btn_historico";
+            this.btn_historico.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
+            this.btn_historico.Size = new System.Drawing.Size(225, 49);
+            this.btn_historico.TabIndex = 2;
+            this.btn_historico.Text = "Histórico de Reservas";
+            this.btn_historico.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_historico.UseVisualStyleBackColor = false;
+            this.btn_historico.Click += new System.EventHandler(this.btn_historico_Click);
             // 
             // btn_ListaReservas
             // 
             this.btn_ListaReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_ListaReservas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_ListaReservas.FlatAppearance.BorderSize = 0;
-            this.btn_ListaReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_ListaReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_ListaReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_ListaReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_ListaReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_ListaReservas.ForeColor = System.Drawing.Color.White;
             this.btn_ListaReservas.Location = new System.Drawing.Point(0, 49);
@@ -289,8 +380,8 @@
             this.btn_RegistarReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_RegistarReservas.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_RegistarReservas.FlatAppearance.BorderSize = 0;
-            this.btn_RegistarReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_RegistarReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_RegistarReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_RegistarReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_RegistarReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_RegistarReservas.ForeColor = System.Drawing.Color.White;
             this.btn_RegistarReservas.Location = new System.Drawing.Point(0, 0);
@@ -303,6 +394,29 @@
             this.btn_RegistarReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btn_RegistarReservas.UseVisualStyleBackColor = false;
             this.btn_RegistarReservas.Click += new System.EventHandler(this.btn_RegistarReservas_Click);
+            // 
+            // btnReservas
+            // 
+            this.btnReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
+            this.btnReservas.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnReservas.FlatAppearance.BorderSize = 0;
+            this.btnReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btnReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReservas.ForeColor = System.Drawing.Color.White;
+            this.btnReservas.Image = global::app.Properties.Resources.registo_medico1;
+            this.btnReservas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReservas.Location = new System.Drawing.Point(0, 345);
+            this.btnReservas.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReservas.Name = "btnReservas";
+            this.btnReservas.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.btnReservas.Size = new System.Drawing.Size(225, 55);
+            this.btnReservas.TabIndex = 3;
+            this.btnReservas.Text = "Reservas";
+            this.btnReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReservas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnReservas.UseVisualStyleBackColor = false;
+            this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
             // 
             // panelCartoes
             // 
@@ -321,8 +435,8 @@
             this.btn_listaCartoes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_listaCartoes.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_listaCartoes.FlatAppearance.BorderSize = 0;
-            this.btn_listaCartoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_listaCartoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_listaCartoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_listaCartoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_listaCartoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_listaCartoes.ForeColor = System.Drawing.Color.White;
             this.btn_listaCartoes.Location = new System.Drawing.Point(0, 49);
@@ -341,8 +455,8 @@
             this.btn_criar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(251)))), ((int)(((byte)(185)))), ((int)(((byte)(113)))));
             this.btn_criar.Dock = System.Windows.Forms.DockStyle.Top;
             this.btn_criar.FlatAppearance.BorderSize = 0;
-            this.btn_criar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
-            this.btn_criar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(42)))), ((int)(((byte)(38)))), ((int)(((byte)(46)))));
+            this.btn_criar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btn_criar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btn_criar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_criar.ForeColor = System.Drawing.Color.White;
             this.btn_criar.Location = new System.Drawing.Point(0, 0);
@@ -356,6 +470,29 @@
             this.btn_criar.UseVisualStyleBackColor = false;
             this.btn_criar.Click += new System.EventHandler(this.btn_criar_Click);
             // 
+            // btn_Cartoes
+            // 
+            this.btn_Cartoes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
+            this.btn_Cartoes.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Cartoes.FlatAppearance.BorderSize = 0;
+            this.btn_Cartoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_Cartoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_Cartoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Cartoes.ForeColor = System.Drawing.Color.White;
+            this.btn_Cartoes.Image = global::app.Properties.Resources.big_id_card1;
+            this.btn_Cartoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Cartoes.Location = new System.Drawing.Point(0, 192);
+            this.btn_Cartoes.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_Cartoes.Name = "btn_Cartoes";
+            this.btn_Cartoes.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
+            this.btn_Cartoes.Size = new System.Drawing.Size(225, 55);
+            this.btn_Cartoes.TabIndex = 1;
+            this.btn_Cartoes.Text = "  Cartões";
+            this.btn_Cartoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Cartoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_Cartoes.UseVisualStyleBackColor = false;
+            this.btn_Cartoes.Click += new System.EventHandler(this.btn_Cartoes_Click);
+            // 
             // panelLogo
             // 
             this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
@@ -367,6 +504,17 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(225, 192);
             this.panelLogo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(52, 17);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // panelPrincipal
             // 
@@ -384,138 +532,13 @@
             // 
             this.pictureBox9.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox9.Image = global::app.Properties.Resources.Logo_200x75;
-            this.pictureBox9.Location = new System.Drawing.Point(302, 219);
+            this.pictureBox9.Location = new System.Drawing.Point(304, 251);
             this.pictureBox9.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(389, 178);
             this.pictureBox9.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox9.TabIndex = 2;
             this.pictureBox9.TabStop = false;
-            // 
-            // btnEquipamentos
-            // 
-            this.btnEquipamentos.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
-            this.btnEquipamentos.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnEquipamentos.FlatAppearance.BorderSize = 0;
-            this.btnEquipamentos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnEquipamentos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnEquipamentos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEquipamentos.ForeColor = System.Drawing.Color.White;
-            this.btnEquipamentos.Image = global::app.Properties.Resources.icons8_computer_30;
-            this.btnEquipamentos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEquipamentos.Location = new System.Drawing.Point(0, 654);
-            this.btnEquipamentos.Margin = new System.Windows.Forms.Padding(4);
-            this.btnEquipamentos.Name = "btnEquipamentos";
-            this.btnEquipamentos.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.btnEquipamentos.Size = new System.Drawing.Size(225, 55);
-            this.btnEquipamentos.TabIndex = 10;
-            this.btnEquipamentos.Text = "Equipamentos";
-            this.btnEquipamentos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEquipamentos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEquipamentos.UseVisualStyleBackColor = false;
-            this.btnEquipamentos.Click += new System.EventHandler(this.btnEquipamentos_Click);
-            // 
-            // btnExit
-            // 
-            this.btnExit.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnExit.FlatAppearance.BorderSize = 0;
-            this.btnExit.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnExit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExit.ForeColor = System.Drawing.Color.White;
-            this.btnExit.Image = global::app.Properties.Resources.sair;
-            this.btnExit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.Location = new System.Drawing.Point(0, 857);
-            this.btnExit.Margin = new System.Windows.Forms.Padding(4);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.btnExit.Size = new System.Drawing.Size(225, 55);
-            this.btnExit.TabIndex = 9;
-            this.btnExit.Text = "  Exit";
-            this.btnExit.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnExit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
-            // 
-            // btnTools
-            // 
-            this.btnTools.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
-            this.btnTools.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnTools.FlatAppearance.BorderSize = 0;
-            this.btnTools.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnTools.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnTools.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTools.ForeColor = System.Drawing.Color.White;
-            this.btnTools.Image = global::app.Properties.Resources.definicoes;
-            this.btnTools.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTools.Location = new System.Drawing.Point(0, 498);
-            this.btnTools.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTools.Name = "btnTools";
-            this.btnTools.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.btnTools.Size = new System.Drawing.Size(225, 55);
-            this.btnTools.TabIndex = 6;
-            this.btnTools.Text = " Manutenção";
-            this.btnTools.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTools.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnTools.UseVisualStyleBackColor = false;
-            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
-            // 
-            // btnReservas
-            // 
-            this.btnReservas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
-            this.btnReservas.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnReservas.FlatAppearance.BorderSize = 0;
-            this.btnReservas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btnReservas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btnReservas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnReservas.ForeColor = System.Drawing.Color.White;
-            this.btnReservas.Image = global::app.Properties.Resources.registo_medico1;
-            this.btnReservas.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReservas.Location = new System.Drawing.Point(0, 345);
-            this.btnReservas.Margin = new System.Windows.Forms.Padding(4);
-            this.btnReservas.Name = "btnReservas";
-            this.btnReservas.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.btnReservas.Size = new System.Drawing.Size(225, 55);
-            this.btnReservas.TabIndex = 3;
-            this.btnReservas.Text = "Reservas";
-            this.btnReservas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReservas.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnReservas.UseVisualStyleBackColor = false;
-            this.btnReservas.Click += new System.EventHandler(this.btnReservas_Click);
-            // 
-            // btn_Cartoes
-            // 
-            this.btn_Cartoes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(156)))), ((int)(((byte)(39)))));
-            this.btn_Cartoes.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btn_Cartoes.FlatAppearance.BorderSize = 0;
-            this.btn_Cartoes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(21)))), ((int)(((byte)(32)))));
-            this.btn_Cartoes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(22)))), ((int)(((byte)(34)))));
-            this.btn_Cartoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_Cartoes.ForeColor = System.Drawing.Color.White;
-            this.btn_Cartoes.Image = global::app.Properties.Resources.big_id_card1;
-            this.btn_Cartoes.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cartoes.Location = new System.Drawing.Point(0, 192);
-            this.btn_Cartoes.Margin = new System.Windows.Forms.Padding(4);
-            this.btn_Cartoes.Name = "btn_Cartoes";
-            this.btn_Cartoes.Padding = new System.Windows.Forms.Padding(7, 0, 0, 0);
-            this.btn_Cartoes.Size = new System.Drawing.Size(225, 55);
-            this.btn_Cartoes.TabIndex = 1;
-            this.btn_Cartoes.Text = "  Cartões";
-            this.btn_Cartoes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_Cartoes.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_Cartoes.UseVisualStyleBackColor = true;
-            this.btn_Cartoes.Click += new System.EventHandler(this.btn_Cartoes_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(49, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(120, 120);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 2;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click_1);
             // 
             // Form1
             // 
@@ -531,6 +554,7 @@
             this.MinimumSize = new System.Drawing.Size(1261, 728);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
@@ -540,9 +564,9 @@
             this.panelReservas.ResumeLayout(false);
             this.panelCartoes.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panelPrincipal.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox9)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,5 +598,6 @@
         private System.Windows.Forms.Button btn_colunas;
         private System.Windows.Forms.Button btn_computadores;
         private System.Windows.Forms.Button btnEquipamentos;
+        private System.Windows.Forms.Button btn_historico;
     }
 }

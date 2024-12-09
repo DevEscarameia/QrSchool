@@ -1,5 +1,7 @@
-﻿using System;
+﻿using app;
+using System;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
 using System.Windows.Forms;
@@ -37,6 +39,7 @@ namespace app
                 alunos.T_CURSO = lbl_Curso.Text;
                 alunos.I_FTALUNO = imagemBytes;
                 alunos.I_QRCODE = imagemBytes;
+                alunos.I_CARTAO = imagemBytes;
 
                 // Define o nome do arquivo e o diretório onde o PDF será salvo
                 string nomeArquivo = $"{lbl_nome.Text}_{lbl_numero.Text}.pdf";
@@ -95,6 +98,8 @@ namespace app
                 // Desenha o bitmap do pnl_cartao no documento de impressão
                 e.Graphics.DrawImage(bmpCartao, 0, 0, cartaoWidthPx, cartaoHeightPx);
                 e.Graphics.DrawImage(bmpQrcode, 170, 0, cartaoWidthPx, cartaoHeightPx);
+
+
             }
             catch (Exception ex)
             {
@@ -140,6 +145,11 @@ namespace app
                     // pode ser útil definir um comportamento padrão ou lidar com isso de outra forma
                     break;
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

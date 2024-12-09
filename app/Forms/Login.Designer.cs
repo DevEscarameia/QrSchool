@@ -120,6 +120,7 @@
             this.txt_palavraPass.Size = new System.Drawing.Size(347, 36);
             this.txt_palavraPass.TabIndex = 68;
             this.txt_palavraPass.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_palavraPass_KeyDown);
+            this.txt_palavraPass.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_palavraPass_KeyPress);
             // 
             // label4
             // 
@@ -142,6 +143,7 @@
             this.txt_utilizador.Size = new System.Drawing.Size(347, 36);
             this.txt_utilizador.TabIndex = 66;
             this.txt_utilizador.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txt_utilizador_KeyDown);
+            this.txt_utilizador.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_utilizador_KeyPress);
             // 
             // label3
             // 

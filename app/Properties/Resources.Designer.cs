@@ -83,6 +83,26 @@ namespace app.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1eb182f7_317c_4961_b1f0_48fa5e72c438_removebg_preview {
+            get {
+                object obj = ResourceManager.GetObject("1eb182f7-317c-4961-b1f0-48fa5e72c438-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1eb182f7_317c_4961_b1f0_48fa5e72c438_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("1eb182f7-317c-4961-b1f0-48fa5e72c438-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _3202926 {
             get {
                 object obj = ResourceManager.GetObject("3202926", resourceCulture);
@@ -113,6 +133,16 @@ namespace app.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accept {
+            get {
+                object obj = ResourceManager.GetObject("accept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap big_id_card {
             get {
                 object obj = ResourceManager.GetObject("big-id-card", resourceCulture);
@@ -136,6 +166,16 @@ namespace app.Properties {
         internal static System.Drawing.Bitmap caixa_de_selecao_vazia {
             get {
                 object obj = ResourceManager.GetObject("caixa-de-selecao-vazia", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap calendar {
+            get {
+                object obj = ResourceManager.GetObject("calendar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -196,6 +236,16 @@ namespace app.Properties {
         internal static System.Drawing.Bitmap CartaoEscola__1_1 {
             get {
                 object obj = ResourceManager.GetObject("CartaoEscola (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap caution {
+            get {
+                object obj = ResourceManager.GetObject("caution", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,6 +373,16 @@ namespace app.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap info {
+            get {
+                object obj = ResourceManager.GetObject("info", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Logo_200x75 {
             get {
                 object obj = ResourceManager.GetObject("Logo_200x75", resourceCulture);
@@ -346,6 +406,16 @@ namespace app.Properties {
         internal static System.Drawing.Bitmap menos_linha_reta_horizontal {
             get {
                 object obj = ResourceManager.GetObject("menos-linha-reta-horizontal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap multiply {
+            get {
+                object obj = ResourceManager.GetObject("multiply", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -406,6 +476,26 @@ namespace app.Properties {
         internal static System.Drawing.Bitmap sair {
             get {
                 object obj = ResourceManager.GetObject("sair", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seta_direita {
+            get {
+                object obj = ResourceManager.GetObject("seta-direita", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap seta_esquerda {
+            get {
+                object obj = ResourceManager.GetObject("seta-esquerda", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

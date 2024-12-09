@@ -1,9 +1,9 @@
-﻿using System;
+﻿using app.Forms;
+using System;
+using System.Data;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
-using System.Drawing;
-using System.Data;
-using app.Forms;
 
 namespace app
 {
@@ -19,12 +19,12 @@ namespace app
             get { return panelPrincipal; }
         }
         public string NomeUtilizador { get; set; }
-         public Form1()
+        public Form1()
         {
             InitializeComponent();
             // Cria uma instância do formulário de login
             login = new Login(this);
-           
+
             // Exibe o formulário de login
             if (login.ShowDialog() == DialogResult.OK)
             {
@@ -88,7 +88,7 @@ namespace app
                     pictureBox1.Image = imagem;
                 }
             }
-            
+
         }
 
         public void addUserControl(UserControl userControl)
@@ -113,7 +113,7 @@ namespace app
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btn_listaCartoes_Click(object sender, EventArgs e)
@@ -133,7 +133,6 @@ namespace app
 
         private void btn_ListaReservas_Click(object sender, EventArgs e)
         {
-
             openChildForm(new ListaReservas(this));
             hideSubMenu();
         }
@@ -188,42 +187,25 @@ namespace app
         private void btnExit_Click(object sender, EventArgs e)
         {
             // Fecha apenas o formulário principal
-            this.Hide();
+            login = new Login(this);
 
-            // Exibe o formulário principal
-           
-
-            // Mostra o formulário de login novamente
-            login.ShowDialog();
-            panelPrincipal.Controls.Clear();
+            // Exibe o formulário de login
+            if (login.ShowDialog() == DialogResult.OK)
+            {
+                // Continua exibindo o formulário principal
+            }
+            else
+            {
+                // Fecha o aplicativo se o usuário não fez login
+                this.Close();
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            AutoScaleMode = AutoScaleMode.Dpi;
         }
-        private void openChildControl(UserControl childControl)
-        {
-            // Fecha o controle filho atual, se houver
-            if (activeControl != null)
-            {
-                panelPrincipal.Controls.Remove(activeControl);
-                activeControl.Dispose();
-            }
-
-            // Define o novo controle filho como ativo
-            activeControl = childControl;
-
-            // Define as propriedades do controle filho
-            childControl.Dock = DockStyle.Fill;
-
-            // Adiciona o controle filho ao painel
-            panelPrincipal.Controls.Add(childControl);
-
-            // Exibe o controle filho
-            childControl.BringToFront();
-            childControl.Show();
-        }
+        
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -232,13 +214,13 @@ namespace app
 
         private void btn_criar_Click(object sender, EventArgs e)
         {
-            openChildForm(new Form2());
+            openChildForm(new CriarCartao());
             hideSubMenu();
         }
 
         private void btnEquipamentos_Click(object sender, EventArgs e)
         {
-            if (Globais.nivel == 1 || Globais.nivel == 3)
+            if (Globais.nivel == 2 || Globais.nivel == 3)
             {
                 showSubMenu(panel_equipamentos);
             }
@@ -250,7 +232,19 @@ namespace app
 
         private void btn_computadores_Click(object sender, EventArgs e)
         {
+            openChildForm(new Computadores());
+            hideSubMenu();
+        }
 
+        private void btn_colunas_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_historico_Click(object sender, EventArgs e)
+        {
+            openChildForm(new Historico(this)); ;
+            hideSubMenu();
         }
     }
 }

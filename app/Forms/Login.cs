@@ -40,6 +40,10 @@ namespace app.Forms
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
+            login();
+        }
+        private void login()
+        {
             string nomeUtilizador = txt_utilizador.Text;
             string palavraPass = txt_palavraPass.Text;
 
@@ -81,7 +85,6 @@ namespace app.Forms
                 txt_utilizador.Focus();
             }
         }
-
         private void btn_cancelar_Click(object sender, EventArgs e)
         {
             Application.Exit();
@@ -89,6 +92,16 @@ namespace app.Forms
         private void login_showPass_CheckedChanged(object sender, EventArgs e)
         {
             txt_palavraPass.PasswordChar = login_showPass.Checked ? '\0' : '*';
+        }
+
+        private void txt_utilizador_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txt_palavraPass_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
         }
     }
 }

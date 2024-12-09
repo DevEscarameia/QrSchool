@@ -1,4 +1,5 @@
-﻿using System;
+﻿using app.Forms;
+using System;
 using System.Data;
 using System.Drawing;
 using System.IO;
@@ -20,7 +21,11 @@ namespace app
 
         }
 
-
+        private void mostrarNotificaçao(string tipo, string message)
+        {
+            Notificação notificação = new Notificação(tipo, message);
+            notificação.Show();
+        }
 
         private void EditarUtilizadores_Load(object sender, EventArgs e)
         {
@@ -49,18 +54,14 @@ namespace app
             // Verifique se há pelo menos uma linha selecionada
             if (dgv.SelectedRows.Count > 0)
             {
-                // Obtenha o ID do usuário selecionado
                 string vid = dgv.SelectedRows[0].Cells[0].Value.ToString();
 
-                // Obtenha todos os usuários e armazene-os em um DataTable
                 DataTable dt = Banco.ObterTodosUtilizadores();
 
-                // Procure na DataTable pelo utilizador com o ID correspondente
                 DataRow[] rows = dt.Select("N_IDUTILIZADOR = '" + vid + "'");
 
                 if (rows.Length > 0)
                 {
-                    // Preencha os campos com os dados do usuário encontrado
                     txt_Id.Text = rows[0].Field<Int64>("N_IDUTILIZADOR").ToString();
                     txt_nomeUtilizador.Text = rows[0].Field<string>("T_NOMEUTILIZADOR").ToString();
                     txt_Senha.Text = rows[0].Field<string>("T_SENHAUTILIZADOR").ToString();
@@ -83,10 +84,7 @@ namespace app
             }
         }
 
-        private void Tbl_Utilizadores_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+       
 
         private void kryptonButton1_Click(object sender, EventArgs e)
         {
@@ -117,11 +115,8 @@ namespace app
             try
             {
                 Banco.AtualizarUtilizador(u);
+                mostrarNotificaçao("SUCESSO", "Utilizador atualizado com sucesso!");
 
-                
-                MessageBox.Show("Utilizador atualizado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-               
                 Tbl_Utilizadores.DataSource = Banco.UtilizadoresIdNome();
                 Tbl_Utilizadores.CurrentCell = Tbl_Utilizadores[0, linha];
             }

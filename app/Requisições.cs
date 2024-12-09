@@ -11,10 +11,10 @@ namespace app
         public Int32 N_IDREQUISIÇÃO;
         public string T_PROFESSORRESPONSAVEL;
         public string T_TURMA;
-        public string T_HORARIO;
+        public string T_HORAINICIO;
+        public string T_HORAFIM;
         public int N_NºPORTATEIS;
-       
         public DateTime T_DATAREQUISIÇÃO;
     }
-   
+
 }
