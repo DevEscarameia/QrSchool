@@ -14,28 +14,23 @@ namespace app
             this.pictureBox = pictureBox;
         }
 
-        public void GerarQRCode(string textData, string outputFilePath)
+        public void GerarQRCode(string textData)
         {
-            // Incluir o caminho da imagem no texto do QRCode
-            string textDataWithImage = $"{textData}";
-
-            // Criar um objeto QRCodeGenerator
+            // Cria um objeto QRCodeGenerator
             QRCodeGenerator qrGenerator = new QRCodeGenerator();
 
-            // Criar um QRCodeData com os dados do texto
-            QRCodeData qrCodeData = qrGenerator.CreateQrCode(textDataWithImage, QRCodeGenerator.ECCLevel.Q);
+            // Cria um QRCodeData com os dados do texto
+            QRCodeData qrCodeData = qrGenerator.CreateQrCode(textData, QRCodeGenerator.ECCLevel.Q);
 
-            // Criar um QRCode usando o QRCodeData
+            // Cria um QRCode usando o QRCodeData
             QRCode qrCode = new QRCode(qrCodeData);
 
-            // Criar uma imagem do QRCode
+            // Cria uma imagem do QRCode
             Bitmap qrCodeImage = qrCode.GetGraphic(20);
 
-            // Exibir a imagem na PictureBox
+            // Mostra a imagem na PictureBox
             pictureBox.Image = qrCodeImage;
-
-            // Salvar a imagem resultante
-            qrCodeImage.Save(outputFilePath);
         }
     }
+
 }

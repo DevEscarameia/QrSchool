@@ -14,13 +14,27 @@ namespace app
         {
             return imagemBytes;
         }
+        private Form1 mainForm;
 
-        public EditarUtilizadores()
+        public EditarUtilizadores(Form1 form1)
         {
             InitializeComponent();
+            mainForm = form1;
 
         }
-
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
+        {
+            if (activeForm != null) activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            mainForm.PanelPrincipal.Controls.Add(childForm); // Usando a propriedade pública
+            mainForm.PanelPrincipal.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
         private void mostrarNotificaçao(string tipo, string message)
         {
             Notificação notificação = new Notificação(tipo, message);
@@ -93,7 +107,7 @@ namespace app
 
         private void btn_apagar_Click(object sender, EventArgs e)
         {
-            Utilizador u = new Utilizador();
+          
             DialogResult res = MessageBox.Show("Apagar Utilizador?", "Apagar", MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
             {
@@ -111,20 +125,42 @@ namespace app
             u.T_NOMEUTILIZADOR = txt_nomeUtilizador.Text;
             u.T_SENHAUTILIZADOR = txt_Senha.Text;
             u.N_NIVELUTILIZADOR = Convert.ToInt32(ComBox_nivel.SelectedItem.ToString());
-            u.I_FTUTILIZADOR = imagemBytes;
+
+            // Verifique se uma nova imagem foi carregada
+            if (imagemBytes != null && imagemBytes.Length > 0)
+            {
+                u.I_FTUTILIZADOR = imagemBytes; // Atribui a nova imagem se foi carregada
+            }
+            else
+            {
+                // Caso não tenha nova imagem, obtém a imagem existente diretamente da linha selecionada
+                byte[] imagemExistente = null;
+                if (Tbl_Utilizadores.SelectedRows.Count > 0)
+                {
+                    string userId = Tbl_Utilizadores.SelectedRows[0].Cells[0].Value.ToString();
+                    DataTable dt = Banco.ObterTodosUtilizadores();
+                    DataRow[] rows = dt.Select("N_IDUTILIZADOR = '" + userId + "'");
+                    if (rows.Length > 0)
+                    {
+                        imagemExistente = rows[0].Field<byte[]>("I_FTUTILIZADOR");
+                    }
+                }
+                u.I_FTUTILIZADOR = imagemExistente; // Mantém a imagem existente
+            }
+
             try
             {
                 Banco.AtualizarUtilizador(u);
                 mostrarNotificaçao("SUCESSO", "Utilizador atualizado com sucesso!");
 
+                // Atualiza a grid e seleciona a linha modificada
                 Tbl_Utilizadores.DataSource = Banco.UtilizadoresIdNome();
                 Tbl_Utilizadores.CurrentCell = Tbl_Utilizadores[0, linha];
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Ocorreu um erro ao atualizar o utilizador: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Este utilizador ja existe");
             }
-
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -163,6 +199,11 @@ namespace app
                     MessageBox.Show($"Ocorreu um erro ao carregar a imagem: {ex.Message}");
                 }
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new NovoUtilizador(mainForm));
         }
     }
 }

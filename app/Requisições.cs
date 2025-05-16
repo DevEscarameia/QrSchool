@@ -15,6 +15,7 @@ namespace app
         public string T_HORAFIM;
         public int N_NºPORTATEIS;
         public DateTime T_DATAREQUISIÇÃO;
+        public string T_DESCRIÇAO;
     }
 
 }

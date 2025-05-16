@@ -118,8 +118,7 @@ namespace app
 
         private void btn_listaCartoes_Click(object sender, EventArgs e)
         {
-
-            openChildForm(new ListaCartões());
+            openChildForm(new ListaCartões(this));
             hideSubMenu();
         }
 
@@ -139,13 +138,13 @@ namespace app
 
         private void btn_NovoUtilizador_Click(object sender, EventArgs e)
         {
-            openChildForm(new NovoUtilizador());
+            openChildForm(new NovoUtilizador(this));
             hideSubMenu();
         }
 
         private void btn_GerenciarUtilizadores_Click(object sender, EventArgs e)
         {
-            openChildForm(new EditarUtilizadores());
+            openChildForm(new EditarUtilizadores(this));
             hideSubMenu();
         }
 
@@ -185,21 +184,25 @@ namespace app
         }
 
         private void btnExit_Click(object sender, EventArgs e)
-        {
-            // Fecha apenas o formulário principal
-            login = new Login(this);
+{
+    // Fecha o formulário principal antes de abrir o login
+    this.Hide(); // Esconde o formulário principal sem fechar imediatamente
 
-            // Exibe o formulário de login
-            if (login.ShowDialog() == DialogResult.OK)
-            {
-                // Continua exibindo o formulário principal
-            }
-            else
-            {
-                // Fecha o aplicativo se o usuário não fez login
-                this.Close();
-            }
+    using (Login login = new Login(this))
+    {
+        if (login.ShowDialog() == DialogResult.OK)
+        {
+            // Se o login for bem-sucedido, reabre o formulário principal
+            this.Show();
         }
+        else
+        {
+            // Fecha completamente a aplicação
+            Application.Exit();
+        }
+    }
+}
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -232,18 +235,40 @@ namespace app
 
         private void btn_computadores_Click(object sender, EventArgs e)
         {
-            openChildForm(new Computadores());
+            openChildForm(new EditarComputadores(this));
             hideSubMenu();
         }
 
-        private void btn_colunas_Click(object sender, EventArgs e)
-        {
-
-        }
+   
 
         private void btn_historico_Click(object sender, EventArgs e)
         {
             openChildForm(new Historico(this)); ;
+            hideSubMenu();
+        }
+
+       
+
+        private void btn_Professores_Click(object sender, EventArgs e)
+        {
+            openChildForm(new EditarTurmas(this));
+            hideSubMenu();
+        }
+
+        private void btn_Professores_Click_1(object sender, EventArgs e)
+        {
+            openChildForm(new EditarProfessores(this));
+            hideSubMenu();
+        }
+
+        private void panelLogo_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_qrcodes_Click(object sender, EventArgs e)
+        {
+            openChildForm(new CriarQrCodes());
             hideSubMenu();
         }
     }

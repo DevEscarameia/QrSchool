@@ -47,7 +47,7 @@ namespace app.Forms
                 N_IDREQUISIÇÃO = idRequisicao
             };
 
-            tbl_historico.DataSource = Banco.TodasRequisiçõesFeitas(levantamento);
+            tbl_historico.DataSource = Banco.TodasRequisiçoesEntregues(levantamento);
             tbl_historico.CellFormatting += tbl_historico_CellFormatting;
 
         }
@@ -73,7 +73,7 @@ namespace app.Forms
         private void tbl_historico_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
 
-            if (tbl_historico.Columns[e.ColumnIndex].Name == "Hora de Levantamento")
+            if (tbl_historico.Columns[e.ColumnIndex].Name == "Hora de Entrega")
             {
                 if (e.Value != null)
                 {

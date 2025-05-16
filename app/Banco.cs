@@ -1,9 +1,12 @@
 ﻿using app;
 using app.Forms;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using static iText.StyledXmlParser.Jsoup.Select.Evaluator;
 
@@ -14,16 +17,36 @@ internal class Banco
 
     //Faz a conexão a Db
 
+    // Função para estabelecer a conexão com o banco de dados SQLite
     private static SQLiteConnection ConexaoBanco()
     {
+        // Verifica se a variável 'conexao' já foi inicializada, ou seja, se já há uma conexão aberta.
         if (conexao == null)
         {
-            conexao = new SQLiteConnection("Data Source= C:\\Users\\duart\\Desktop\\app\\app\\Banco\\db_escola;Version=3;");
+            // Obtém o caminho para a pasta "AppData" do sistema operacional, onde será armazenado o banco de dados.
+            string pastaAppData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
+            // Define o caminho completo para o banco de dados SQLite (dentro de "QRSchool" em "AppData").
+            string caminhoBanco = Path.Combine(pastaAppData, "QRSchool", "db_escola");
+
+            // Verifica se a pasta "QRSchool" já existe no diretório "AppData". Caso contrário, cria a pasta.
+            if (!Directory.Exists(Path.Combine(pastaAppData, "QRSchool")))
+            {
+                Directory.CreateDirectory(Path.Combine(pastaAppData, "QRSchool"));
+            }
+
+            // Cria uma nova conexão SQLite com o caminho do banco de dados definido acima.
+            conexao = new SQLiteConnection($"Data Source={caminhoBanco};Version=3;");
+
+            // Abre a conexão com o banco de dados.
             conexao.Open();
         }
 
+        // Retorna a conexão estabelecida (caso já tenha sido criada) ou a nova conexão.
         return conexao;
     }
+
+
 
     public static DataTable ObterTodosUtilizadores()
     {
@@ -48,7 +71,7 @@ internal class Banco
     }
 
     //função para ir buscar os dados dos cartões
-    public static DataTable TodosCartões()
+    public static DataTable ObterCartões()
     {
         SQLiteDataAdapter da = null;
         DataTable dt = new DataTable();
@@ -70,6 +93,27 @@ internal class Banco
         }
     }
 
+    public static DataTable TodosCartões()
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "SELECT * FROM tb_cartoes";
+                da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
+                da.Fill(dt);
+                ConexaoBanco().Close();
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
     //função para adicionar novos alunos a tabela tb_cartoes
     public static void CriarAluno(Alunos aluno)
     {
@@ -140,7 +184,7 @@ internal class Banco
         }
         catch (Exception ex)
         {
-            MessageBox.Show("Erro ao criar utilizador: " + ex.Message);
+            MessageBox.Show("Este utilizador já existe!");
             ConexaoBanco().Close();
         }
     }
@@ -278,8 +322,7 @@ internal class Banco
         }
     }
 
-    //função para obter as turmas que tem reserva feita 
-    public static DataTable ObterTurmas()
+    public static DataTable ObterTodosProfessores()
     {
         SQLiteDataAdapter da = null;
         DataTable dt = new DataTable();
@@ -287,7 +330,7 @@ internal class Banco
         {
             using (var cmd = ConexaoBanco().CreateCommand())
             {
-                cmd.CommandText = "SELECT T_TURMA FROM tb_requisiçõesComputadores GROUP BY T_TURMA";
+                cmd.CommandText = "SELECT N_IDPROFESSOR AS ID, T_NOMEPROFESSOR AS Professor FROM tb_professores";
                 da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
                 da.Fill(dt);
                 ConexaoBanco().Close();
@@ -300,6 +343,7 @@ internal class Banco
         }
     }
 
+
     //função para adicionar requisições 
     public static void NovaRequisição(Requisições requisições)
     {
@@ -308,13 +352,14 @@ internal class Banco
             conexao.Open();
             using (var cmd = conexao.CreateCommand())
             {
-                cmd.CommandText = "INSERT INTO tb_requisiçõesComputadores(T_PROFESSORRESPONSAVEL, T_TURMA, T_HORAINICIO,T_HORAFIM, N_NºPORTATEIS, T_DATAREQUISIÇÃO) VALUES(@T_PROFESSORRESPONSAVEL, @T_TURMA, @T_HORAINICIO,@T_HORAFIM, @N_NºPORTATEIS, @T_DATAREQUISIÇÃO)";
+                cmd.CommandText = "INSERT INTO tb_requisiçõesComputadores(T_PROFESSORRESPONSAVEL, T_TURMA, T_HORAINICIO,T_HORAFIM, N_NºPORTATEIS, T_DATAREQUISIÇÃO, T_DESCRIÇAO) VALUES(@T_PROFESSORRESPONSAVEL, @T_TURMA, @T_HORAINICIO,@T_HORAFIM, @N_NºPORTATEIS, @T_DATAREQUISIÇÃO, @T_DESCRIÇAO)";
                 cmd.Parameters.AddWithValue("@T_PROFESSORRESPONSAVEL", requisições.T_PROFESSORRESPONSAVEL);
                 cmd.Parameters.AddWithValue("@T_TURMA", requisições.T_TURMA);
                 cmd.Parameters.AddWithValue("@T_HORAINICIO", requisições.T_HORAINICIO);
                 cmd.Parameters.AddWithValue("@T_HORAFIM", requisições.T_HORAFIM);
                 cmd.Parameters.AddWithValue("@N_NºPORTATEIS", requisições.N_NºPORTATEIS);
                 cmd.Parameters.AddWithValue("@T_DATAREQUISIÇÃO", requisições.T_DATAREQUISIÇÃO.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@T_DESCRIÇAO", requisições.T_DESCRIÇAO);
                 cmd.ExecuteNonQuery();
 
                 ConexaoBanco().Close();
@@ -387,8 +432,8 @@ internal class Banco
                 // A consulta está correta para filtrar pelo ID da requisição
                 cmd.CommandText = "SELECT N_IDREQUISIÇÃOFEITA AS 'Id', " +
                   "N_IDREQUISIÇÃO AS 'ID Reserva', " +
-                  "N_IDALUNO AS 'ID Aluno', " +
-                  "N_IDPORTATIL AS 'ID Portátil', " +
+                  "N_IDALUNO AS 'Aluno', " +
+                  "N_IDPORTATIL AS 'Portátil', " +
                   "T_PROFESSOR AS 'Professor', " +
                   "N_HORALEVANTAMENTO AS 'Hora de Levantamento', " +
                   "D_DATALEVANTAMENTO AS 'Data de Levantamento', " +
@@ -447,6 +492,29 @@ internal class Banco
             {
                 cmd.CommandText = "DELETE FROM tb_requisiçõesComputadores WHERE N_IDREQUISIÇÃO = @N_IDREQUISIÇÃO";
                 cmd.Parameters.AddWithValue("@N_IDREQUISIÇÃO", id);
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            conexao.Close();
+        }
+    }
+    public static void ApagarHistorico(string data1, string data2)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "DELETE FROM tb_requisiçõesComputadores WHERE T_DATAREQUISIÇÃO >= @data1 AND T_DATAREQUISIÇÃO <= @data2";
+                cmd.Parameters.AddWithValue("@data1", data1);
+                cmd.Parameters.AddWithValue("@data2", data2);
                 cmd.ExecuteNonQuery();
 
             }
@@ -562,7 +630,7 @@ internal class Banco
             conexao.Close();
         }
     }
-    public static DataTable TodosComputadore()
+    public static DataTable TodosComputadores()
     {
         SQLiteDataAdapter da = null;
         DataTable dt = new DataTable();
@@ -571,7 +639,7 @@ internal class Banco
         {
             using (var cmd = ConexaoBanco().CreateCommand())
             {
-                cmd.CommandText = "SELECT *  FROM tb_portateis";
+                cmd.CommandText = "SELECT ID_Portateis AS ID,T_SOFTWARES AS Softwares, T_DESCRIÇÃO AS Descrição, B_ESTADO AS Estado  FROM tb_portateis";
                 da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
                 da.Fill(dt);
                 ConexaoBanco().Close();
@@ -584,6 +652,93 @@ internal class Banco
         }
     }
 
+    public static DataTable TodosComputadoresSelecionar()
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "SELECT ID_Portateis AS ID,T_SOFTWARES AS Softwares, T_DESCRIÇÃO AS Descrição  FROM tb_portateis";
+                da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
+                da.Fill(dt);
+                ConexaoBanco().Close();
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static void AtualizarComputadores(Computador c)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = "UPDATE tb_portateis SET T_SOFTWARES=@T_SOFTWARES, T_DESCRIÇÃO=@T_DESCRIÇÃO, B_ESTADO=@B_ESTADO WHERE ID_Portateis=@ID_Portateis";
+                cmd.Parameters.AddWithValue("@T_SOFTWARES", c.T_SOFTWARES);
+                cmd.Parameters.AddWithValue("@ID_Portateis", c.ID_Portateis);
+                cmd.Parameters.AddWithValue("@T_DESCRIÇÃO", c.T_DESCRIÇÃO);
+                cmd.Parameters.AddWithValue("@B_ESTADO", c.B_ESTADO);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+   
+    public static void NovoComputador(Computador c)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = conexao.CreateCommand())
+            {
+                cmd.CommandText = "INSERT INTO tb_portateis(T_SOFTWARES,T_DESCRIÇÃO,B_ESTADO) VALUES(@T_SOFTWARES,@T_DESCRIÇÃO,@B_ESTADO)";
+                cmd.Parameters.AddWithValue("@T_SOFTWARES", c.T_SOFTWARES);
+                cmd.Parameters.AddWithValue("@T_DESCRIÇÃO", c.T_DESCRIÇÃO);
+                cmd.Parameters.AddWithValue("@B_ESTADO", c.B_ESTADO);
+                cmd.ExecuteNonQuery();
+
+                ConexaoBanco().Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro ao criar Professor: " + ex.Message);
+            ConexaoBanco().Close();
+        }
+    }
+    public static void ApagarComputador(string id)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "DELETE FROM tb_portateis WHERE ID_Portateis =" + id;
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            conexao.Close();
+        }
+
+    }
     public static DataTable ObterHorarioInicio()
     {
         SQLiteDataAdapter da = null;
@@ -623,7 +778,7 @@ internal class Banco
         {
             throw ex;
         }
-    }
+    } 
     public static DataTable ObterReservasPorHorario(DateTime dataReserva, string horaInicio, string horaFim)
     {
 
@@ -758,7 +913,7 @@ internal class Banco
             conexao.Close();
         }
     }
-    public static void ApagarEntrega(string id)
+    public static void ApagarEntrega(string id, string hora, string data, string professor)
     {
         try
         {
@@ -779,16 +934,27 @@ internal class Banco
 
                         // Agora apagamos a entrega
                         reader.Close(); // Fecha o reader antes de executar a exclusão
-                        cmd.CommandText = "DELETE FROM tb_Entregas WHERE N_IDENTREGA = @N_IDENTREGA";
+                        cmd.CommandText = @"DELETE FROM tb_Entregas 
+                                    WHERE N_HORAENTREGA = @hora 
+                                      AND D_DATAENTREGA = @data 
+                                      AND T_PROFESSOR = @professor 
+                                      AND N_IDALUNO = @aluno 
+                                      AND N_IDPORTATIL = @portatil";
+                        cmd.Parameters.AddWithValue("@hora", hora);
+                        cmd.Parameters.AddWithValue("@data", data);
+                        cmd.Parameters.AddWithValue("@professor", professor.Trim());
+                        cmd.Parameters.AddWithValue("@aluno", idAluno);
+                        cmd.Parameters.AddWithValue("@portatil", idPortatil);
                         cmd.ExecuteNonQuery();
 
                         // Atualiza o status do levantamento para "Levantado"
                         cmd.CommandText = "UPDATE tb_Levantamentos SET T_STATUS = 'Levantado' " +
-                                          "WHERE N_IDALUNO = @N_IDALUNO AND N_IDPORTATIL = @N_IDPORTATIL AND N_IDREQUISIÇÃO = @N_IDREQUISIÇÃO";
+                                          "WHERE N_IDALUNO = @N_IDALUNO AND N_IDPORTATIL = @N_IDPORTATIL AND T_PROFESSOR = @professor   AND D_DATALEVANTAMENTO = @data  ";
                         cmd.Parameters.Clear(); // Limpar os parâmetros antigos
+                        cmd.Parameters.AddWithValue("@data", data);
+                        cmd.Parameters.AddWithValue("@professor", professor.Trim());
                         cmd.Parameters.AddWithValue("@N_IDALUNO", idAluno);
                         cmd.Parameters.AddWithValue("@N_IDPORTATIL", idPortatil);
-                        cmd.Parameters.AddWithValue("@N_IDREQUISIÇÃO", idRequisicao);
                         cmd.ExecuteNonQuery();
                     }
                 }
@@ -913,8 +1079,8 @@ internal class Banco
                 // A consulta está correta para filtrar pelo ID da requisição
                 cmd.CommandText = "SELECT N_IDENTREGA AS 'Id', " +
                   "N_IDREQUISIÇÃO AS 'ID Reserva', " +
-                  "N_IDALUNO AS 'ID Aluno', " +
-                  "N_IDPORTATIL AS 'ID Portátil', " +
+                  "N_IDALUNO AS 'Aluno', " +
+                  "N_IDPORTATIL AS 'Portátil', " +
                   "T_PROFESSOR AS 'Professor', " +
                   "N_HORAENTREGA AS 'Hora de Entrega', " +
                   "D_DATAENTREGA AS 'Data de Entrega', " +
@@ -1032,7 +1198,7 @@ internal class Banco
             throw ex;
         }
     }
-    public static void ApagarLevantamentoEEntrega(string idRequisicao)
+    public static void ApagarLevantamentoEspecifico(string hora, string data, string professor, string idAluno, string idPortatil)
     {
         try
         {
@@ -1043,50 +1209,50 @@ internal class Banco
                 {
                     cmd.Transaction = transacao;
 
-                    // Buscar o ID do aluno e ID do computador associados ao levantamento
-                    cmd.CommandText = "SELECT N_IDALUNO, N_IDPORTATIL FROM tb_Levantamentos WHERE N_IDREQUISIÇÃOFEITA = @N_IDREQUISIÇÃOFEITA";
-                    cmd.Parameters.AddWithValue("@N_IDREQUISIÇÃOFEITA", idRequisicao);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            var idAluno = reader["N_IDALUNO"].ToString();
-                            var idComputador = reader["N_IDPORTATIL"].ToString();
-                            reader.Close();
-
-                            // Apagar a entrega com o mesmo ID do aluno e ID do computador
-                            cmd.CommandText = "DELETE FROM tb_Entregas WHERE N_IDALUNO = @N_IDALUNO AND N_IDPORTATIL = @N_IDPORTATIL";
-                            cmd.Parameters.AddWithValue("@N_IDALUNO", idAluno);
-                            cmd.Parameters.AddWithValue("@N_IDPORTATIL", idComputador);
-                            cmd.ExecuteNonQuery();
-                        }
-                        else
-                        {
-                            throw new Exception("Levantamento não encontrado.");
-                        }
-                    }
-
-                    // Apagar o levantamento
-                    cmd.CommandText = "DELETE FROM tb_Levantamentos WHERE N_IDREQUISIÇÃOFEITA = @N_IDREQUISIÇÃOFEITA";
-                    cmd.Parameters["@N_IDREQUISIÇÃOFEITA"].Value = idRequisicao;
+                    // Apagar todas as entregas associadas ao levantamento
+                    cmd.CommandText = @"DELETE FROM tb_Entregas 
+                                    WHERE N_IDALUNO = @aluno 
+                                      AND N_IDPORTATIL = @portatil 
+                                      AND T_PROFESSOR = @professor";
+                    cmd.Parameters.AddWithValue("@aluno", idAluno);
+                    cmd.Parameters.AddWithValue("@portatil", idPortatil);
+                    cmd.Parameters.AddWithValue("@professor", professor.Trim());
                     cmd.ExecuteNonQuery();
-                }
 
-                // Confirmar transação
-                transacao.Commit();
+                    // Apagar todos os levantamentos com os mesmos critérios (hora, data, professor, aluno, portátil)
+                    cmd.CommandText = @"DELETE FROM tb_Levantamentos 
+                                    WHERE N_HORALEVANTAMENTO = @hora 
+                                      AND D_DATALEVANTAMENTO = @data 
+                                      AND T_PROFESSOR = @professor 
+                                      AND N_IDALUNO = @aluno 
+                                      AND N_IDPORTATIL = @portatil";
+                    cmd.Parameters.AddWithValue("@hora", hora);
+                    cmd.Parameters.AddWithValue("@data", data);
+                    cmd.Parameters.AddWithValue("@professor", professor.Trim());
+                    cmd.Parameters.AddWithValue("@aluno", idAluno);
+                    cmd.Parameters.AddWithValue("@portatil", idPortatil);
+                    cmd.ExecuteNonQuery();
+
+                    // Confirmar a transação
+                    transacao.Commit();
+                }
             }
         }
         catch (Exception ex)
         {
-            throw ex;
+            MessageBox.Show("Erro ao apagar levantamento: " + ex.Message);
         }
         finally
         {
             conexao.Close();
         }
     }
-    public static DataTable ObterReservasPorData(DateTime dataReserva)
+
+
+
+
+
+    public static DataTable ObterReservasPorData(string dataReserva)
     {
 
         SQLiteDataAdapter da = null;
@@ -1095,12 +1261,12 @@ internal class Banco
         {
             using (var cmd = ConexaoBanco().CreateCommand())
             {
-                string dataFormatada = dataReserva.ToString("yyyy-MM-dd");
+                
 
                 cmd.CommandText = "SELECT N_IDREQUISIÇÃO AS ID, T_PROFESSORRESPONSAVEL AS Professor, T_TURMA AS Turma,strftime('%H:%M', T_HORAINICIO) AS Inicio, strftime('%H:%M', T_HORAFIM) AS Fim,     N_NºPORTATEIS AS Portateis,      T_DATAREQUISIÇÃO AS Data FROM tb_requisiçõesComputadores WHERE T_DATAREQUISIÇÃO <= date('now', 'localtime')  AND T_DATAREQUISIÇÃO = @T_DATAREQUISIÇÃO;";
 
                 // Adicionar parâmetros
-                cmd.Parameters.AddWithValue("@T_DATAREQUISIÇÃO", dataFormatada);
+                cmd.Parameters.AddWithValue("@T_DATAREQUISIÇÃO", dataReserva);
                 
 
                 // Passar o comando correto para o adaptador
@@ -1117,6 +1283,94 @@ internal class Banco
         catch (Exception ex)
         {
             throw new Exception("Erro ao obter as reservas por Data: " + ex.Message);
+        }
+    }
+    public static DataTable ObterReservasPorData2(string dataReserva)
+    {
+
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = "SELECT N_IDREQUISIÇÃO AS ID, T_PROFESSORRESPONSAVEL AS Professor, T_TURMA AS Turma,strftime('%H:%M', T_HORAINICIO) AS Inicio, strftime('%H:%M', T_HORAFIM) AS Fim,     N_NºPORTATEIS AS Portateis,      T_DATAREQUISIÇÃO AS Data FROM tb_requisiçõesComputadores WHERE T_DATAREQUISIÇÃO >= date('now', 'localtime')  AND T_DATAREQUISIÇÃO = @T_DATAREQUISIÇÃO;";
+
+                // Adicionar parâmetros
+                cmd.Parameters.AddWithValue("@T_DATAREQUISIÇÃO", dataReserva);
+
+
+                // Passar o comando correto para o adaptador
+                da = new SQLiteDataAdapter(cmd);
+
+                // Preencher a DataTable com os resultados
+                da.Fill(dt);
+            }
+
+            // Fechar a conexão após o uso
+            ConexaoBanco().Close();
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao obter as reservas por Data: " + ex.Message);
+        }
+    }
+    public static DataTable ObterReservasIguais(Requisições requisições, int idRequisicaoAtual)
+    {
+
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = @"
+                                    SELECT 
+                                        N_IDREQUISIÇÃO AS ID,
+                                        T_PROFESSORRESPONSAVEL AS Professor,
+                                        T_TURMA AS Turma,
+                                        strftime('%H:%M', T_HORAINICIO) AS Inicio,
+                                        strftime('%H:%M', T_HORAFIM) AS Fim,
+                                        N_NºPORTATEIS AS Portateis,
+                                        T_DATAREQUISIÇÃO AS Data
+                                    FROM 
+                                        tb_requisiçõesComputadores
+                                    WHERE 
+                                        T_DATAREQUISIÇÃO = @T_DATAREQUISIÇÃO
+                                        AND T_PROFESSORRESPONSAVEL = @professor
+                                        AND T_TURMA = @turma
+                                        AND N_NºPORTATEIS = @quantidade
+                                        AND N_IDREQUISIÇÃO != @idAtual; ";
+
+
+
+
+                // Adicionar parâmetros
+                cmd.Parameters.AddWithValue("@T_DATAREQUISIÇÃO", requisições.T_DATAREQUISIÇÃO.ToString("yyyy-MM-dd"));
+                cmd.Parameters.AddWithValue("@professor", requisições.T_PROFESSORRESPONSAVEL); // Ex: txt_professor.Text
+                cmd.Parameters.AddWithValue("@turma", requisições.T_TURMA); // Podes obter pela ligação ao aluno, se necessário
+                cmd.Parameters.AddWithValue("@quantidade", requisições.N_NºPORTATEIS); // Ex: int.Parse(txt_quantidade.Text)
+                cmd.Parameters.AddWithValue("@idAtual", idRequisicaoAtual); // ID da requisição já levantada
+
+
+
+                // Passar o comando correto para o adaptador
+                da = new SQLiteDataAdapter(cmd);
+
+                // Preencher a DataTable com os resultados
+                da.Fill(dt);
+            }
+
+            // Fechar a conexão após o uso
+            ConexaoBanco().Close();
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao obter as reservas iguas: " + ex.Message);
         }
     }
     public static DataTable ObterReservasPorProfessor(string professor)
@@ -1141,6 +1395,46 @@ internal class Banco
                     tb_requisiçõesComputadores 
                 WHERE 
                     T_DATAREQUISIÇÃO <= date('now', 'localtime') 
+                    AND T_PROFESSORRESPONSAVEL LIKE @T_PROFESSORRESPONSAVEL;
+            ";
+
+                cmd.Parameters.AddWithValue("@T_PROFESSORRESPONSAVEL", $"%{professor}%");
+
+                da = new SQLiteDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+
+            ConexaoBanco().Close();
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao obter as reservas por professor: " + ex.Message);
+        }
+    }
+    public static DataTable ObterReservasPorProfessor2(string professor)
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = @"
+                SELECT 
+                    N_IDREQUISIÇÃO AS ID, 
+                    T_PROFESSORRESPONSAVEL AS Professor, 
+                    T_TURMA AS Turma, 
+                    strftime('%H:%M', T_HORAINICIO) AS Inicio, 
+                    strftime('%H:%M', T_HORAFIM) AS Fim, 
+                    N_NºPORTATEIS AS Portateis, 
+                    T_DATAREQUISIÇÃO AS Data
+                FROM 
+                    tb_requisiçõesComputadores 
+                WHERE 
+                    T_DATAREQUISIÇÃO >= date('now', 'localtime') 
                     AND T_PROFESSORRESPONSAVEL LIKE @T_PROFESSORRESPONSAVEL;
             ";
 
@@ -1201,5 +1495,351 @@ internal class Banco
             throw new Exception("Erro ao obter as reservas por professor: " + ex.Message);
         }
     }
+    public static string ObterDescriçaoReservas(int idRequisicao)
+    {
+        try
+        {
+            conexao.Open();
+
+            using (var cmd = conexao.CreateCommand())
+            {
+                cmd.CommandText = "SELECT T_DESCRIÇAO FROM tb_requisiçõesComputadores WHERE N_IDREQUISIÇÃO = @idRequisicao";
+                cmd.Parameters.AddWithValue("@idRequisicao", idRequisicao);
+
+                // Executa o comando e obtém o resultado
+                var resultado = cmd.ExecuteScalar();
+
+                // Verifica se o resultado não é nulo e retorna a descrição
+                return resultado != null ? resultado.ToString() : "Descrição não encontrada.";
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Erro ao obter descrição: " + ex.Message);
+            return "Erro inesperado ao obter descrição.";
+        }
+        finally
+        {
+            conexao.Close();
+        }
+    }
+    public static void AtualizarCartão(Alunos a)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = @"
+                UPDATE tb_cartoes 
+                SET 
+                    T_NOME = @Nome,
+                    N_NUMERO = @Numero,
+                    N_TRIENIO = @Trienio,
+                    T_CURSO = @Curso,
+                    I_FTALUNO = @FotoAluno,
+                    I_CARTAO = @ImagemCartao
+                WHERE 
+                    N_IDCARTAO = @ID";
+
+                cmd.Parameters.AddWithValue("@Nome", a.T_NOME);
+                cmd.Parameters.AddWithValue("@Numero", a.N_NUMERO);
+                cmd.Parameters.AddWithValue("@Trienio", a.N_TRIENIO);
+                cmd.Parameters.AddWithValue("@Curso", a.T_CURSO);
+                cmd.Parameters.AddWithValue("@FotoAluno",  a.I_FTALUNO); // Bytes da imagem do aluno
+                cmd.Parameters.AddWithValue("@ImagemCartao", a.I_CARTAO); // Bytes da imagem do cartão
+                cmd.Parameters.AddWithValue("@ID", a.Id_Cartão);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static DataTable ObterTurmas()
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "SELECT N_IDTURMA AS ID, T_TURMA AS Turma, T_DIRETORTURMA AS [Diretor de Turma], T_CURSO AS Curso FROM tb_turmas";
+                da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
+                da.Fill(dt);
+                ConexaoBanco().Close();
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static DataTable ObterTodasTurmas()
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "SELECT * FROM tb_turmas";
+                da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
+                da.Fill(dt);
+                ConexaoBanco().Close();
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static DataTable ObterNomeTurmas()
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "SELECT T_TURMA FROM tb_turmas";
+                da = new SQLiteDataAdapter(cmd.CommandText, ConexaoBanco());
+                da.Fill(dt);
+                ConexaoBanco().Close();
+                return dt;
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static void NovaTurma(Turma turma)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = conexao.CreateCommand())
+            {
+                cmd.CommandText = "INSERT INTO tb_turmas(T_TURMA, T_DIRETORTURMA, T_CURSO) VALUES(@T_TURMA, @T_DIRETORTURMA, @T_CURSO)";
+                cmd.Parameters.AddWithValue("@T_TURMA", turma.T_TURMA);
+                cmd.Parameters.AddWithValue("@T_DIRETORTURMA", turma.T_DIRETORTURMA);
+                cmd.Parameters.AddWithValue("@T_CURSO", turma.T_CURSO);
+                cmd.ExecuteNonQuery();
+
+                ConexaoBanco().Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro ao criar Turma: " + ex.Message);
+            ConexaoBanco().Close();
+        }
+    }
+    public static void ApagarTurma(string id)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "DELETE FROM tb_turmas WHERE N_IDTURMA=" + id;
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            conexao.Close();
+        }
+
+    }
+    public static void AtualizarTurma(Turma t)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = "UPDATE tb_turmas SET T_TURMA=@T_TURMA, T_DIRETORTURMA=@T_DIRETORTURMA, T_CURSO=@T_CURSO WHERE N_IDTURMA=@N_IDTURMA";
+                cmd.Parameters.AddWithValue("@T_TURMA", t.T_TURMA);
+                cmd.Parameters.AddWithValue("@T_DIRETORTURMA", t.T_DIRETORTURMA);
+                cmd.Parameters.AddWithValue("T_CURSO", t.T_CURSO);
+                cmd.Parameters.AddWithValue("@N_IDTURMA", t.N_IDTURMA);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static void ApagarProfessor(string id)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = "DELETE FROM tb_professores WHERE N_IDPROFESSOR =" + id;
+                cmd.ExecuteNonQuery();
+
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+        finally
+        {
+            conexao.Close();
+        }
+
+    }
+    public static void AtualizarProfessor(Professor p)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+
+                cmd.CommandText = "UPDATE tb_professores SET T_NOMEPROFESSOR=@T_NOMEPROFESSOR WHERE N_IDPROFESSOR=@N_IDPROFESSOR";
+                cmd.Parameters.AddWithValue("@T_NOMEPROFESSOR", p.T_NOMEPROFESSOR);
+                cmd.Parameters.AddWithValue("@N_IDPROFESSOR", p.N_IDPROFESSOR);
+                cmd.ExecuteNonQuery();
+            }
+        }
+        catch (Exception ex)
+        {
+            throw ex;
+        }
+    }
+    public static void NovoProfessor(Professor p)
+    {
+        try
+        {
+            conexao.Open();
+            using (var cmd = conexao.CreateCommand())
+            {
+                cmd.CommandText = "INSERT INTO tb_professores(T_NOMEPROFESSOR) VALUES(@T_NOMEPROFESSOR)";
+                cmd.Parameters.AddWithValue("@T_NOMEPROFESSOR", p.T_NOMEPROFESSOR);
+                cmd.ExecuteNonQuery();
+
+                ConexaoBanco().Close();
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro ao criar Professor: " + ex.Message);
+            ConexaoBanco().Close();
+        }
+    }
+    public static DataTable ObterCartãoesPorTurma(string turma)
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = @"SELECT N_IDCARTAO as 'ID', T_NOME as 'Nome', N_NUMERO as 'Número' 
+                             FROM tb_cartoes c
+                             JOIN tb_turmas t ON c.T_CURSO = t.T_CURSO
+                             WHERE t.T_TURMA = @T_TURMA";
+
+
+
+                cmd.Parameters.AddWithValue("@T_TURMA", turma);
+
+                da = new SQLiteDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+
+            ConexaoBanco().Close();
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao obter os cartões por turma: " + ex.Message);
+        }
+    }
+    public static DataTable ObterCartãoesPorAluno(string aluno)
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                cmd.CommandText = @"SELECT N_IDCARTAO as 'ID', T_NOME as 'Nome', N_NUMERO as 'Número' 
+                             FROM tb_cartoes 
+                            WHERE T_NOME LIKE '%' || @T_NOME || '%'";
+
+
+
+                cmd.Parameters.AddWithValue("@T_NOME", aluno);
+
+                da = new SQLiteDataAdapter(cmd);
+
+                da.Fill(dt);
+            }
+
+            ConexaoBanco().Close();
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception("Erro ao obter os cartões por turma: " + ex.Message);
+        }
+    }
+    public static DataTable ObterCartõesSelecionados(List<int> ids)
+    {
+        SQLiteDataAdapter da = null;
+        DataTable dt = new DataTable();
+
+        try
+        {
+            if (ids == null || ids.Count == 0)
+                return dt; // Retorna um DataTable vazio se a lista de IDs estiver vazia
+
+            using (var cmd = ConexaoBanco().CreateCommand())
+            {
+                // Cria a string com os IDs diretamente na query
+                string idList = string.Join(",", ids);
+
+                    // Query utilizando os IDs diretamente na string
+                    cmd.CommandText = $@"SELECT I_CARTAO, I_QRCODE 
+                                     FROM tb_cartoes 
+                                     WHERE N_IDCARTAO IN ({idList})";
+
+                    da = new SQLiteDataAdapter(cmd);
+                    da.Fill(dt);
+                }
+            
+
+            return dt;
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Erro ao obter os cartões: " + ex.Message);
+            return dt;
+        }
+    }
+
 }
+
+
 

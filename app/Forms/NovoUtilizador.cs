@@ -14,28 +14,27 @@ namespace app
         {
             return imagemBytes;
         }
+        private Form1 mainForm;
 
-        public NovoUtilizador()
+        public NovoUtilizador(Form1 form1)
         {
             InitializeComponent();
+            mainForm = form1;
         }
-
-        public void addUserControl(UserControl userControl)
+        private Form activeForm = null;
+        private void openChildForm(Form childForm)
         {
-            userControl.Dock = DockStyle.Fill;
-            Controls.Clear();
-            Controls.Add(userControl);
-            userControl.BringToFront();
+            if (activeForm != null) activeForm.Close();
+            activeForm = childForm;
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            mainForm.PanelPrincipal.Controls.Add(childForm); // Usando a propriedade pública
+            mainForm.PanelPrincipal.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
         }
-
-        private void kryptonButton1_Click(object sender, EventArgs e)
-        {
-            txt_nomeUtilizador.Text = "Nome";
-            txt_Senha.Text = "Senha";
-            ComBox_nivel.Text = "Nível";
-            PixBox_Ftutilizador.Image = app.Properties.Resources.pessoa;
-        }
-
+       
         private void button5_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -72,7 +71,6 @@ namespace app
                 }
             }
         }
-
         private void btn_salvarUtilizador_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txt_nomeUtilizador.Text) || string.IsNullOrWhiteSpace(txt_Senha.Text) || ComBox_nivel.SelectedItem == null)
@@ -94,12 +92,8 @@ namespace app
 
         private void AtualizarTabelaUtilizadores()
         {
-
             // Defina a fonte de dados
             Tbl_Utilizadores.DataSource = Banco.TodosUtilizadores();
-
-
-
         }
 
         private void NovoUtilizador_Load(object sender, EventArgs e)
@@ -123,16 +117,17 @@ namespace app
                 Tbl_Utilizadores.ClearSelection();
             };
         }
-
-
-
-
-
         private void btn_Limpar_Click(object sender, EventArgs e)
         {
             txt_nomeUtilizador.Text = string.Empty;
             txt_Senha.Text = string.Empty;
             ComBox_nivel.SelectedIndex = -1;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            openChildForm(new EditarUtilizadores(mainForm));
+
         }
     }
 }
