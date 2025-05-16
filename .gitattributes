@@ -61,17 +61,16 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-# Forçar a linguagem C# em ficheiros com extensão .cs
+# Linguagens comuns do projeto
 *.cs linguist-language=C#
+*.xaml linguist-language=XAML
+*.sql linguist-language=SQL
+*.json linguist-language=JSON
+*.xml linguist-language=XML
 
-# Forçar a linguagem Python em ficheiros com extensão .py
-*.py linguist-language=Python
+# Para ignorar ficheiros binários ou de configuração, que não contam para a linguagem
+*.png linguist-vendored
+*.jpg linguist-vendored
+*.dll linguist-vendored
+*.exe linguist-vendored
 
-# Forçar a linguagem JavaScript em ficheiros .js
-*.js linguist-language=JavaScript
-
-# Forçar a linguagem HTML
-*.html linguist-language=HTML
-
-# Forçar a linguagem CSS
-*.css linguist-language=CSS
