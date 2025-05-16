@@ -61,6 +61,17 @@
 #*.PDF   diff=astextplain
 #*.rtf   diff=astextplain
 #*.RTF   diff=astextplain
-git add .gitattributes
-git commit -m "Adicionar configuração de .gitattributes"
-git push origin <nome-da-branch>
+# Forçar a linguagem C# em ficheiros com extensão .cs
+*.cs linguist-language=C#
+
+# Forçar a linguagem Python em ficheiros com extensão .py
+*.py linguist-language=Python
+
+# Forçar a linguagem JavaScript em ficheiros .js
+*.js linguist-language=JavaScript
+
+# Forçar a linguagem HTML
+*.html linguist-language=HTML
+
+# Forçar a linguagem CSS
+*.css linguist-language=CSS
