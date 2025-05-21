@@ -39,6 +39,7 @@ namespace app.Forms
             txt_trienio.KeyPress += txt_trienio_KeyPress;
             txt_trienio.TextChanged += txt_trienio_TextChanged;
             txt_trienio.MaxLength = 7;
+      
         }
 
         private void btn_CarregarFt_Click(object sender, EventArgs e)
@@ -74,68 +75,58 @@ namespace app.Forms
             }
         }
 
-        private void btn_GeraQr_Click(object sender, EventArgs e)
+        private void btn_GerarQr_Click(object sender, EventArgs e)
         {
             // Monta o texto que será convertido em QR Code
-            string textData = $"{txt_nome.Text} {txt_numero.Text} {ComBox_Curso.SelectedItem}";
-
-            // Define o caminho de saída para o arquivo do QR Code
-            string outputFilePath = $"C:\\YourFolderPath\\QrCode_{txt_nome.Text}_{txt_numero.Text}.png";
-
+            string textData = txt_numero.Text;
+            if (string.IsNullOrEmpty(textData))
+            {
+                MessageBox.Show("Por favor, preencha o número antes de criar o QR Code.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 // Chama o método para gerar o QR Code
                 CriarQRCode criarQRCode = new CriarQRCode(PixBx_Qrcode);
-                criarQRCode.GerarQRCode(textData, outputFilePath);
-
-                // Libera a imagem antiga no PictureBox (evita o erro de GDI+)
-                if (PixBx_Qrcode.Image != null)
-                {
-                    PixBx_Qrcode.Image.Dispose();
-                    PixBx_Qrcode.Image = null;
-                }
-
-                // Lê os bytes da imagem do QR Code gerada
-                using (FileStream fs = new FileStream(outputFilePath, FileMode.Open, FileAccess.Read))
-                {
-                    byte[] imagemBytes2 = new byte[fs.Length];
-                    fs.Read(imagemBytes2, 0, (int)fs.Length);
-
-                    // Exibe a nova imagem no PictureBox
-                    using (MemoryStream ms = new MemoryStream(imagemBytes2))
-                    {
-                        PixBx_Qrcode.Image = Image.FromStream(ms);
-                    }
-                }
+                criarQRCode.GerarQRCode(textData);
             }
             catch (Exception ex)
             {
-                // Exibe uma mensagem de erro caso algo dê errado
-                MessageBox.Show($"Ocorreu um erro ao gerar o QR code: {ex.Message}");
+                MessageBox.Show($"Erro ao gerar QR Code: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void btn_Guardar_Click(object sender, EventArgs e)
         {
-            // Verifica se algum dos campos ainda tem os valores iniciais
-            if (txt_nome.Text == "Nome" || txt_numero.Text == "Número" || txt_trienio.Text == "Triénio" || ComBox_Curso.Text == "Curso")
+            // Verifica se algum dos campos ainda tem os valores iniciais ou está vazio
+            if (string.IsNullOrWhiteSpace(txt_nome.Text) || txt_nome.Text == "Nome" ||
+                string.IsNullOrWhiteSpace(txt_numero.Text) || txt_numero.Text == "Número" ||
+                string.IsNullOrWhiteSpace(txt_trienio.Text) || txt_trienio.Text == "Triénio" ||
+                PixBx_FotoAluno.Image == null || PixBx_Qrcode.Image == null)
             {
-                MessageBox.Show("Preencha todos os campos antes de prosseguir.");
+                MessageBox.Show("Preencha todos os campos antes de prosseguir.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Obtém os valores dos campos
-            string nome = txt_nome.Text;
-            string numero = txt_numero.Text;
-            string trienio = txt_trienio.Text;
-            string curso = ComBox_Curso.SelectedItem.ToString();
+            string nome = txt_nome.Text.Trim();
+            string numero = txt_numero.Text.Trim();
+            string trienio = txt_trienio.Text.Trim();
+            string curso = ComBox_Curso.Text;
             Image ftAluno = PixBx_FotoAluno.Image;
             Image qrcode = PixBx_Qrcode.Image;
 
-            // Cria uma instância do FrmPrevisualizarCartão passando os valores
+            // Limpa os campos após a criação do formulário
+            txt_nome.Text = "";
+            txt_numero.Text = "";
+            txt_trienio.Text = "";
+            ComBox_Curso.SelectedIndex = -1;
+            PixBx_FotoAluno.Image = app.Properties.Resources.pessoa;
+            PixBx_Qrcode.Image = null;
+
+            // Cria e exibe a instância do formulário de pré-visualização
             FrmPrevisualizarCartão frmPrevisualizarCartão = new FrmPrevisualizarCartão(nome, numero, trienio, curso, ftAluno, qrcode, imagemBytes2);
             frmPrevisualizarCartão.Show();
-
 
 
         }
@@ -162,5 +153,7 @@ namespace app.Forms
         {
 
         }
+
+        
     }
 }

@@ -34,6 +34,7 @@
             this.Tbl_Utilizadores = new Krypton.Toolkit.KryptonDataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.txt_Id = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.ComBox_nivel = new System.Windows.Forms.ComboBox();
@@ -145,6 +146,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.Color.LightGray;
             this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.button1);
             this.panel4.Controls.Add(this.txt_Id);
             this.panel4.Controls.Add(this.label1);
             this.panel4.Controls.Add(this.ComBox_nivel);
@@ -157,19 +159,41 @@
             this.panel4.Controls.Add(this.btn_salvar);
             this.panel4.Controls.Add(this.btn_CarregarFt);
             this.panel4.Controls.Add(this.PixBox_Ftutilizador);
+            this.panel4.ForeColor = System.Drawing.Color.Black;
             this.panel4.Location = new System.Drawing.Point(13, 386);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1135, 296);
             this.panel4.TabIndex = 84;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Black;
+            this.button1.Location = new System.Drawing.Point(657, 233);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 46);
+            this.button1.TabIndex = 28;
+            this.button1.Text = "Novo Utilizador";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // txt_Id
             // 
             this.txt_Id.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Id.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_Id.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txt_Id.Enabled = false;
             this.txt_Id.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Id.Location = new System.Drawing.Point(261, 74);
+            this.txt_Id.Location = new System.Drawing.Point(261, 73);
             this.txt_Id.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Id.Name = "txt_Id";
             this.txt_Id.ReadOnly = true;
@@ -183,7 +207,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(198, 82);
+            this.label1.Location = new System.Drawing.Point(198, 76);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(26, 18);
@@ -194,6 +218,7 @@
             // ComBox_nivel
             // 
             this.ComBox_nivel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ComBox_nivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComBox_nivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComBox_nivel.FormattingEnabled = true;
             this.ComBox_nivel.Items.AddRange(new object[] {
@@ -224,9 +249,8 @@
             // 
             this.txt_nomeUtilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_nomeUtilizador.BackColor = System.Drawing.SystemColors.Window;
-            this.txt_nomeUtilizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_nomeUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nomeUtilizador.Location = new System.Drawing.Point(261, 112);
+            this.txt_nomeUtilizador.Location = new System.Drawing.Point(259, 112);
             this.txt_nomeUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nomeUtilizador.Name = "txt_nomeUtilizador";
             this.txt_nomeUtilizador.Size = new System.Drawing.Size(304, 24);
@@ -250,7 +274,7 @@
             // 
             this.txt_Senha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Senha.Location = new System.Drawing.Point(261, 153);
+            this.txt_Senha.Location = new System.Drawing.Point(259, 153);
             this.txt_Senha.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.Size = new System.Drawing.Size(256, 24);
@@ -282,8 +306,8 @@
             this.btn_apagar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_apagar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_apagar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_apagar.ForeColor = System.Drawing.Color.White;
-            this.btn_apagar.Location = new System.Drawing.Point(570, 233);
+            this.btn_apagar.ForeColor = System.Drawing.Color.Black;
+            this.btn_apagar.Location = new System.Drawing.Point(484, 233);
             this.btn_apagar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_apagar.Name = "btn_apagar";
             this.btn_apagar.Size = new System.Drawing.Size(165, 46);
@@ -303,8 +327,8 @@
             this.btn_salvar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvar.ForeColor = System.Drawing.Color.White;
-            this.btn_salvar.Location = new System.Drawing.Point(397, 233);
+            this.btn_salvar.ForeColor = System.Drawing.Color.Black;
+            this.btn_salvar.Location = new System.Drawing.Point(311, 233);
             this.btn_salvar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(165, 46);
@@ -323,7 +347,7 @@
             this.btn_CarregarFt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_CarregarFt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CarregarFt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CarregarFt.ForeColor = System.Drawing.Color.White;
+            this.btn_CarregarFt.ForeColor = System.Drawing.Color.Black;
             this.btn_CarregarFt.Location = new System.Drawing.Point(825, 190);
             this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_CarregarFt.Name = "btn_CarregarFt";
@@ -385,5 +409,6 @@
         private System.Windows.Forms.TextBox txt_Senha;
         private System.Windows.Forms.Label label8;
         private Krypton.Toolkit.KryptonDataGridView Tbl_Utilizadores;
+        private System.Windows.Forms.Button button1;
     }
 }

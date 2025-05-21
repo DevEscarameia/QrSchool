@@ -28,16 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.btn_todas = new System.Windows.Forms.Button();
+            this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.apagarhistorico = new System.Windows.Forms.Button();
             this.txt_FiltroProfessor = new System.Windows.Forms.MaskedTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txt_filtroData = new System.Windows.Forms.MaskedTextBox();
             this.tbl_historico = new Krypton.Toolkit.KryptonDataGridView();
             this.label5 = new System.Windows.Forms.Label();
-            this.kryptonDateTimePicker1 = new Krypton.Toolkit.KryptonDateTimePicker();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbl_historico)).BeginInit();
             this.SuspendLayout();
@@ -49,24 +54,131 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel6.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel6.Controls.Add(this.kryptonDateTimePicker1);
+            this.panel6.Controls.Add(this.btn_todas);
+            this.panel6.Controls.Add(this.dateTimePicker3);
+            this.panel6.Controls.Add(this.dateTimePicker2);
+            this.panel6.Controls.Add(this.dateTimePicker1);
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.label3);
+            this.panel6.Controls.Add(this.apagarhistorico);
             this.panel6.Controls.Add(this.txt_FiltroProfessor);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.label2);
-            this.panel6.Controls.Add(this.txt_filtroData);
             this.panel6.Controls.Add(this.tbl_historico);
             this.panel6.Controls.Add(this.label5);
-            this.panel6.Location = new System.Drawing.Point(13, 13);
+            this.panel6.Location = new System.Drawing.Point(13, 14);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1090, 616);
             this.panel6.TabIndex = 91;
             // 
+            // btn_todas
+            // 
+            this.btn_todas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.btn_todas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_todas.FlatAppearance.BorderSize = 0;
+            this.btn_todas.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.btn_todas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_todas.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.btn_todas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_todas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_todas.ForeColor = System.Drawing.Color.Black;
+            this.btn_todas.Location = new System.Drawing.Point(179, 87);
+            this.btn_todas.Margin = new System.Windows.Forms.Padding(4);
+            this.btn_todas.Name = "btn_todas";
+            this.btn_todas.Size = new System.Drawing.Size(104, 30);
+            this.btn_todas.TabIndex = 127;
+            this.btn_todas.Text = "Totas";
+            this.btn_todas.UseVisualStyleBackColor = false;
+            this.btn_todas.Click += new System.EventHandler(this.btn_todas_Click);
+            // 
+            // dateTimePicker3
+            // 
+            this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker3.Location = new System.Drawing.Point(65, 90);
+            this.dateTimePicker3.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker3.Name = "dateTimePicker3";
+            this.dateTimePicker3.Size = new System.Drawing.Size(104, 22);
+            this.dateTimePicker3.TabIndex = 126;
+            this.dateTimePicker3.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
+            // 
+            // dateTimePicker2
+            // 
+            this.dateTimePicker2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker2.Location = new System.Drawing.Point(508, 571);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker2.Name = "dateTimePicker2";
+            this.dateTimePicker2.Size = new System.Drawing.Size(95, 22);
+            this.dateTimePicker2.TabIndex = 125;
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePicker1.Location = new System.Drawing.Point(379, 571);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(100, 22);
+            this.dateTimePicker1.TabIndex = 124;
+            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label4
+            // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(293, 571);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 18);
+            this.label4.TabIndex = 123;
+            this.label4.Text = "Apagar de";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(487, 571);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(16, 18);
+            this.label3.TabIndex = 122;
+            this.label3.Text = "a";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // apagarhistorico
+            // 
+            this.apagarhistorico.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.apagarhistorico.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.apagarhistorico.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.apagarhistorico.FlatAppearance.BorderSize = 0;
+            this.apagarhistorico.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.apagarhistorico.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.apagarhistorico.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.apagarhistorico.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.apagarhistorico.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.apagarhistorico.ForeColor = System.Drawing.Color.Black;
+            this.apagarhistorico.Location = new System.Drawing.Point(631, 559);
+            this.apagarhistorico.Margin = new System.Windows.Forms.Padding(4);
+            this.apagarhistorico.Name = "apagarhistorico";
+            this.apagarhistorico.Size = new System.Drawing.Size(165, 46);
+            this.apagarhistorico.TabIndex = 119;
+            this.apagarhistorico.Text = "Apagar";
+            this.apagarhistorico.UseVisualStyleBackColor = false;
+            this.apagarhistorico.Click += new System.EventHandler(this.apagarhistorico_Click);
+            // 
             // txt_FiltroProfessor
             // 
-            this.txt_FiltroProfessor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txt_FiltroProfessor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_FiltroProfessor.Location = new System.Drawing.Point(258, 88);
+            this.txt_FiltroProfessor.Location = new System.Drawing.Point(379, 89);
+            this.txt_FiltroProfessor.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txt_FiltroProfessor.Name = "txt_FiltroProfessor";
             this.txt_FiltroProfessor.Size = new System.Drawing.Size(196, 27);
             this.txt_FiltroProfessor.TabIndex = 118;
@@ -79,7 +191,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(173, 91);
+            this.label1.Location = new System.Drawing.Point(293, 91);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 18);
@@ -101,29 +213,17 @@
             this.label2.Text = "Data:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // txt_filtroData
-            // 
-            this.txt_filtroData.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txt_filtroData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_filtroData.Location = new System.Drawing.Point(67, 88);
-            this.txt_filtroData.Mask = "0000-00-00";
-            this.txt_filtroData.Name = "txt_filtroData";
-            this.txt_filtroData.Size = new System.Drawing.Size(99, 27);
-            this.txt_filtroData.TabIndex = 96;
-            this.txt_filtroData.Click += new System.EventHandler(this.txt_filtroData_Click);
-            this.txt_filtroData.TextChanged += new System.EventHandler(this.txt_filtroData_TextChanged);
-            // 
             // tbl_historico
             // 
             this.tbl_historico.AllowUserToAddRows = false;
             this.tbl_historico.AllowUserToDeleteRows = false;
             this.tbl_historico.AllowUserToResizeColumns = false;
             this.tbl_historico.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            this.tbl_historico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            this.tbl_historico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.tbl_historico.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -145,14 +245,14 @@
             this.tbl_historico.ReadOnly = true;
             this.tbl_historico.RowHeadersVisible = false;
             this.tbl_historico.RowHeadersWidth = 51;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.tbl_historico.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            this.tbl_historico.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.tbl_historico.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.LightGray;
             this.tbl_historico.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbl_historico.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.tbl_historico.ShowEditingIcon = false;
-            this.tbl_historico.Size = new System.Drawing.Size(1015, 465);
+            this.tbl_historico.Size = new System.Drawing.Size(1048, 423);
             this.tbl_historico.StateCommon.Background.Color1 = System.Drawing.Color.Transparent;
             this.tbl_historico.StateCommon.Background.Color2 = System.Drawing.Color.Transparent;
             this.tbl_historico.StateCommon.BackStyle = Krypton.Toolkit.PaletteBackStyle.FormMain;
@@ -186,14 +286,6 @@
             this.label5.TabIndex = 2;
             this.label5.Text = "Históricos";
             // 
-            // kryptonDateTimePicker1
-            // 
-            this.kryptonDateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.kryptonDateTimePicker1.Location = new System.Drawing.Point(490, 91);
-            this.kryptonDateTimePicker1.Name = "kryptonDateTimePicker1";
-            this.kryptonDateTimePicker1.Size = new System.Drawing.Size(168, 25);
-            this.kryptonDateTimePicker1.TabIndex = 119;
-            // 
             // Historico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -201,6 +293,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
             this.ClientSize = new System.Drawing.Size(1116, 642);
             this.Controls.Add(this.panel6);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Historico";
             this.Text = "Historico";
             this.Load += new System.EventHandler(this.Historico_Load);
@@ -216,10 +309,15 @@
         private System.Windows.Forms.Panel panel6;
         private Krypton.Toolkit.KryptonDataGridView tbl_historico;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.MaskedTextBox txt_filtroData;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.MaskedTextBox txt_FiltroProfessor;
         private System.Windows.Forms.Label label1;
-        private Krypton.Toolkit.KryptonDateTimePicker kryptonDateTimePicker1;
+        private System.Windows.Forms.Button apagarhistorico;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dateTimePicker3;
+        private System.Windows.Forms.Button btn_todas;
     }
 }

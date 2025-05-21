@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.btn_Limpar = new System.Windows.Forms.Button();
             this.btn_salvarUtilizador = new System.Windows.Forms.Button();
             this.btn_CarregarFt = new System.Windows.Forms.Button();
@@ -54,9 +55,11 @@
             // 
             // panel3
             // 
-            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.Color.LightGray;
             this.panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel3.Controls.Add(this.button1);
             this.panel3.Controls.Add(this.btn_Limpar);
             this.panel3.Controls.Add(this.btn_salvarUtilizador);
             this.panel3.Controls.Add(this.btn_CarregarFt);
@@ -74,6 +77,27 @@
             this.panel3.Size = new System.Drawing.Size(1135, 296);
             this.panel3.TabIndex = 77;
             // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(200)))), ((int)(((byte)(134)))));
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(8)))), ((int)(((byte)(138)))));
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.button1.Location = new System.Drawing.Point(657, 233);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(165, 46);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Editar Utilizadores";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btn_Limpar
             // 
             this.btn_Limpar.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -85,8 +109,8 @@
             this.btn_Limpar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_Limpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Limpar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Limpar.ForeColor = System.Drawing.Color.White;
-            this.btn_Limpar.Location = new System.Drawing.Point(590, 215);
+            this.btn_Limpar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_Limpar.Location = new System.Drawing.Point(484, 233);
             this.btn_Limpar.Margin = new System.Windows.Forms.Padding(4);
             this.btn_Limpar.Name = "btn_Limpar";
             this.btn_Limpar.Size = new System.Drawing.Size(165, 46);
@@ -106,8 +130,8 @@
             this.btn_salvarUtilizador.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_salvarUtilizador.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salvarUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_salvarUtilizador.ForeColor = System.Drawing.Color.White;
-            this.btn_salvarUtilizador.Location = new System.Drawing.Point(417, 215);
+            this.btn_salvarUtilizador.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_salvarUtilizador.Location = new System.Drawing.Point(311, 233);
             this.btn_salvarUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.btn_salvarUtilizador.Name = "btn_salvarUtilizador";
             this.btn_salvarUtilizador.Size = new System.Drawing.Size(165, 46);
@@ -126,8 +150,8 @@
             this.btn_CarregarFt.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.btn_CarregarFt.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_CarregarFt.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_CarregarFt.ForeColor = System.Drawing.Color.White;
-            this.btn_CarregarFt.Location = new System.Drawing.Point(842, 169);
+            this.btn_CarregarFt.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_CarregarFt.Location = new System.Drawing.Point(846, 190);
             this.btn_CarregarFt.Margin = new System.Windows.Forms.Padding(4);
             this.btn_CarregarFt.Name = "btn_CarregarFt";
             this.btn_CarregarFt.Size = new System.Drawing.Size(109, 28);
@@ -141,7 +165,7 @@
             this.PixBox_Ftutilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PixBox_Ftutilizador.BackColor = System.Drawing.SystemColors.ButtonShadow;
             this.PixBox_Ftutilizador.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(842, 56);
+            this.PixBox_Ftutilizador.Location = new System.Drawing.Point(846, 77);
             this.PixBox_Ftutilizador.Margin = new System.Windows.Forms.Padding(4);
             this.PixBox_Ftutilizador.Name = "PixBox_Ftutilizador";
             this.PixBox_Ftutilizador.Size = new System.Drawing.Size(109, 113);
@@ -152,13 +176,14 @@
             // ComBox_nivel
             // 
             this.ComBox_nivel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.ComBox_nivel.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.ComBox_nivel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ComBox_nivel.FormattingEnabled = true;
             this.ComBox_nivel.Items.AddRange(new object[] {
             "1",
             "2",
             "3"});
-            this.ComBox_nivel.Location = new System.Drawing.Point(236, 143);
+            this.ComBox_nivel.Location = new System.Drawing.Point(240, 164);
             this.ComBox_nivel.Margin = new System.Windows.Forms.Padding(4);
             this.ComBox_nivel.Name = "ComBox_nivel";
             this.ComBox_nivel.Size = new System.Drawing.Size(304, 26);
@@ -171,7 +196,7 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(173, 146);
+            this.label4.Location = new System.Drawing.Point(177, 167);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 18);
@@ -182,7 +207,7 @@
             // 
             this.txt_nomeUtilizador.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_nomeUtilizador.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_nomeUtilizador.Location = new System.Drawing.Point(236, 56);
+            this.txt_nomeUtilizador.Location = new System.Drawing.Point(240, 77);
             this.txt_nomeUtilizador.Margin = new System.Windows.Forms.Padding(4);
             this.txt_nomeUtilizador.Name = "txt_nomeUtilizador";
             this.txt_nomeUtilizador.Size = new System.Drawing.Size(304, 24);
@@ -195,7 +220,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(173, 103);
+            this.label3.Location = new System.Drawing.Point(177, 124);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(54, 18);
@@ -206,7 +231,7 @@
             // 
             this.txt_Senha.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txt_Senha.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Senha.Location = new System.Drawing.Point(236, 100);
+            this.txt_Senha.Location = new System.Drawing.Point(240, 121);
             this.txt_Senha.Margin = new System.Windows.Forms.Padding(4);
             this.txt_Senha.Name = "txt_Senha";
             this.txt_Senha.Size = new System.Drawing.Size(256, 24);
@@ -219,7 +244,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Black;
-            this.label2.Location = new System.Drawing.Point(173, 59);
+            this.label2.Location = new System.Drawing.Point(177, 80);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 18);
@@ -238,7 +263,9 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.Tbl_Utilizadores);
@@ -337,9 +364,9 @@
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel3);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(857, 695);
             this.Name = "NovoUtilizador";
             this.Text = "NovoUtilizador";
             this.Load += new System.EventHandler(this.NovoUtilizador_Load);
@@ -370,5 +397,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
         private Krypton.Toolkit.KryptonDataGridView Tbl_Utilizadores;
+        private System.Windows.Forms.Button button1;
     }
 }

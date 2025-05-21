@@ -1,4 +1,5 @@
-﻿using System;
+﻿using app.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -24,6 +25,32 @@ namespace app
             PopularComboBoxProfessores();
             PopularComboBoxHoraFim();
             PopularComboBoxHoraInicio();
+            PopularComboBoxTurmas();
+        }
+        public void PopularComboBoxTurmas()
+        {
+            try
+            {
+                DataTable dtTurmas = Banco.ObterNomeTurmas();
+                Combox_Turma.Items.Clear();
+
+                if (dtTurmas != null && dtTurmas.Rows.Count > 0)
+                {
+                    foreach (DataRow row in dtTurmas.Rows)
+                    {
+                        Combox_Turma.Items.Add(row["T_TURMA"].ToString());
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao obter as Turmas: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void mostrarNotificaçao(string tipo, string message)
+        {
+            Notificação notificação = new Notificação(tipo, message);
+            notificação.Show();
         }
         public void PopularComboBoxProfessores()
         {
@@ -65,14 +92,29 @@ namespace app
 
         private void btn_apagar_Click(object sender, EventArgs e)
         {
+            if (Tbl_ListaReservas.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Por favor, seleciona uma reserva para apagar.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string idReserva = Tbl_ListaReservas.SelectedRows[0].Cells["ID"].Value.ToString();
-            DialogResult res = MessageBox.Show("Apagar reserva?", "Apagar", MessageBoxButtons.YesNo);
+
+            DialogResult res = MessageBox.Show("Apagar reserva?", "Apagar", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (res == DialogResult.Yes)
             {
-                Banco.ApagarRequisição(idReserva);
-                Tbl_ListaReservas.Rows.RemoveAt(Tbl_ListaReservas.SelectedRows[0].Index);
+                try
+                {
+                    Banco.ApagarRequisição(idReserva);
+                    Tbl_ListaReservas.Rows.RemoveAt(Tbl_ListaReservas.SelectedRows[0].Index);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro ao apagar reserva: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
+
 
         public void PopularComboBoxHoraInicio()
         {
@@ -164,9 +206,19 @@ namespace app
         private void btn_salvar_Click(object sender, EventArgs e)
         {
             // Validação dos campos
-            if (string.IsNullOrWhiteSpace(txt_Id.Text) || string.IsNullOrWhiteSpace(txt_turma.Text) || string.IsNullOrWhiteSpace(txt_NPortateis.Text))
+            if (string.IsNullOrWhiteSpace(txt_Id.Text)  || string.IsNullOrWhiteSpace(txt_NPortateis.Text))
             {
-                MessageBox.Show("Por favor, preencha todos os campos obrigatórios.", "Erro de Validação", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mostrarNotificaçao("AVISO", "Por favor, preencha todos os campos obrigatórios.");
+                return;
+            }
+
+            int indiceInicio = ComBox_HInicio.SelectedIndex;
+            int indiceFim = ComBox_HFim.SelectedIndex;
+
+            // Verifica se o fim é o imediatamente seguinte ao início
+            if (indiceFim != indiceInicio)
+            {
+                MessageBox.Show("A hora de fim deve ser imediatamente a seguir à hora de início.", "Horário inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -177,7 +229,7 @@ namespace app
                 T_PROFESSORRESPONSAVEL = ComBox_Professor.SelectedItem.ToString(),
                 T_HORAINICIO = ComBox_HInicio.SelectedItem.ToString(),
                 T_HORAFIM = ComBox_HFim.SelectedItem.ToString(),
-                T_TURMA = txt_turma.Text,
+                T_TURMA = Combox_Turma.SelectedItem.ToString(),
                 N_NºPORTATEIS = Convert.ToInt32(txt_NPortateis.Text),
                 T_DATAREQUISIÇÃO = Tp_Data.Value
             };
@@ -185,12 +237,13 @@ namespace app
             try
             {
                 Banco.AtualizarRequisições(r);
-                MessageBox.Show("Reserva atualizada com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mostrarNotificaçao("SUCESSO", "Reserva atualizada com sucesso!");
                 Tbl_ListaReservas.DataSource = Banco.TodasRequisições();
                 Tbl_ListaReservas.CurrentCell = Tbl_ListaReservas[0, linha];
             }
             catch (Exception ex)
             {
+               
                 MessageBox.Show($"Erro ao atualizar a reserva: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -219,12 +272,54 @@ namespace app
                     ComBox_Professor.Text = selectedRow["Professor"].ToString();
                     ComBox_HInicio.Text = selectedRow["Inicio"].ToString();
                     ComBox_HFim.Text = selectedRow["Fim"].ToString();
-                    txt_turma.Text = selectedRow["Turma"].ToString();
+                    Combox_Turma.Text = selectedRow["Turma"].ToString();
                     txt_NPortateis.Text = selectedRow["Portateis"].ToString();
                     Tp_Data.Value = Convert.ToDateTime(selectedRow["Data"]);
 
                 }
             }
+        }
+        private void txt_FiltroProfessor_TextChanged(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txt_FiltroProfessor.Text))
+            {
+                DataTable reservas = Banco.TodasRequisições();
+                Tbl_ListaReservas.DataSource = reservas;
+            }
+            else
+            {
+                string filtroProfessor = txt_FiltroProfessor.Text.Trim();
+                DataTable reservas = Banco.ObterReservasPorProfessor2(filtroProfessor);
+                Tbl_ListaReservas.DataSource = reservas;
+            }
+        }
+        private void txt_filtroData_TextChanged(object sender, EventArgs e)
+        {
+            
+        }
+      
+
+        private void Tbl_ListaReservas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (Tbl_ListaReservas.Columns[e.ColumnIndex].Name == "Data")
+            {
+                if (e.Value != null)
+                {
+                    // Formatar a hora para exibição
+                    e.Value = DateTime.Parse(e.Value.ToString()).ToString("yyyy/MM/dd");
+                }
+            }
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            string dataSelecionada = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            Tbl_ListaReservas.DataSource = Banco.ObterReservasPorData2(dataSelecionada);
+        }
+
+        private void btn_todas_Click(object sender, EventArgs e)
+        {
+            Tbl_ListaReservas.DataSource = Banco.TodasRequisições();
         }
     }
 }

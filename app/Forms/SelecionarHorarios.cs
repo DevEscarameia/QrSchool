@@ -51,6 +51,7 @@ namespace app.Forms
 
                     // Define o resultado do diálogo e fecha o formulário
                     this.DialogResult = DialogResult.OK;
+                    Close();
                 }
             }
         }

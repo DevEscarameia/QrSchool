@@ -142,6 +142,50 @@ namespace app.Forms
                 
 
                 Banco.NovaEntrega(entrega);
+
+
+                DateTime dataRequisicao;
+                if (!DateTime.TryParse(txt_data.Text, out dataRequisicao))
+                {
+                    MessageBox.Show("Data inválida. Por favor, insira uma data válida.", "Erro de Data", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                Requisições requisicaoAtual = new Requisições
+                {
+                    T_PROFESSORRESPONSAVEL = txt_professor.Text,
+                    T_TURMA = txt_turma.Text, // Asegura que tens esse txt_turma no formulário
+                    N_NºPORTATEIS = maxEntregas,
+                    T_DATAREQUISIÇÃO = dataRequisicao // Passa a data convertida
+                };
+
+                DataTable reservasIguais = Banco.ObterReservasIguais(requisicaoAtual, idRequisiçao);
+
+
+                foreach (DataRow row in reservasIguais.Rows)
+                {
+                    int idRequisicaoIgual = Convert.ToInt32(row["ID"]);
+
+                    // Verifica se já existe levantamento para essa reserva igual
+                    string erro = Banco.VerificarEntregaExistente(idRequisicaoIgual, idAluno, idPortatil);
+
+                    if (string.IsNullOrEmpty(erro))
+                    {
+                        Entrega ent = new Entrega
+                        {
+                            N_IDREQUISIÇÃO = idRequisicaoIgual,
+                            N_IDALUNO = idAluno,
+                            N_IDPORTATIL = idPortatil,
+                            T_PROFESSOR = txt_professor.Text,
+                            D_DATAENTREGA = DateTime.Now.Date,
+                            N_HORAENTREGA = DateTime.Now.ToString("HH:mm:ss"),
+                            T_STATUS = "Entregue"
+                        };
+
+                        Banco.NovaEntrega(ent);
+                    }
+                }
+
                 mostrarNotificaçao("SUCESSO", "Entrega realizado com sucesso!");
                 Levantamentos levantamento = new Levantamentos
                 {
@@ -185,11 +229,24 @@ namespace app.Forms
             if (tbl_Entregas.CurrentRow != null)
             {
                 string idLevantamento = tbl_Entregas.CurrentRow.Cells["ID"].Value.ToString();
+                string horaCompleta = tbl_Entregas.CurrentRow.Cells["Hora de Entrega"].Value.ToString();
+                string dataOriginal = tbl_Entregas.CurrentRow.Cells["Data de Entrega"].Value.ToString();
+                string professor = tbl_Entregas.CurrentRow.Cells["Professor"].Value.ToString();
 
-                DialogResult res = MessageBox.Show("Apagar Levantamento?", "Apagar", MessageBoxButtons.YesNo);
+                DateTime dataConvertida = DateTime.Parse(dataOriginal);
+                string dataFormatada = dataConvertida.ToString("yyyy-MM-dd");
+
+                // Garantir que a hora está no formato HH:mm:ss
+                string horaFormatada = DateTime.Parse(horaCompleta).ToString("HH:mm:ss");
+
+
+                DialogResult res = MessageBox.Show("Apagar Entrega?", "Apagar", MessageBoxButtons.YesNo);
+
+
                 if (res == DialogResult.Yes)
                 {
-                    Banco.ApagarEntrega(idLevantamento);
+                    Banco.ApagarEntrega(idLevantamento, horaFormatada, dataFormatada, professor);
+                    mostrarNotificaçao("SUCESSO", "Entrega apagado com sucesso!");
                     tbl_Entregas.Rows.Remove(tbl_Entregas.CurrentRow);
                 }
             }
@@ -198,6 +255,7 @@ namespace app.Forms
                 MessageBox.Show("Selecione uma linha para apagar.");
             }
         }
+        
         private void tbl_Entregas_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (tbl_Entregas.Columns[e.ColumnIndex].Name == "Hora de Entrega")

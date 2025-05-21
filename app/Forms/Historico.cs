@@ -55,38 +55,7 @@ namespace app.Forms
             }
         }
 
-        private void txt_filtroData_TextChanged(object sender, EventArgs e)
-        {
-            // Se a TextBox estiver vazia, exibe todas as reservas
-            if (string.IsNullOrWhiteSpace(txt_filtroData.Text))
-            {
-                // Chama o método para obter todas as reservas
-                DataTable reservas = Banco.ObterHistorico();
-                tbl_historico.DataSource = reservas;
-                return; // Impede que o código abaixo seja executado quando estiver vazio
-            }
-
-            // Se o comprimento da TextBox for menor que 10, exibe todas as reservas
-            if (txt_filtroData.Text.Length < 10)
-            {
-                DataTable reservas = Banco.ObterHistorico();
-                tbl_historico.DataSource = reservas;
-                return;
-            }
-
-            // Verifica se o texto tem o comprimento correto para a data (yyyy-MM-dd)
-            if (txt_filtroData.Text.Length == 10)
-            {
-                if (DateTime.TryParseExact(txt_filtroData.Text, "yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out DateTime dataReserva))
-                {
-                    // Chama o método para obter as reservas filtradas por data
-                    DataTable reservas = Banco.ObterReservasPorData(dataReserva);
-
-                    // Exibe os resultados na DataGridView
-                    tbl_historico.DataSource = reservas;
-                }
-            }
-        }
+        
 
         private void tbl_historico_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
@@ -95,7 +64,7 @@ namespace app.Forms
                 if (e.Value != null)
                 {
                     // Formatar a hora para exibição
-                    e.Value = DateTime.Parse(e.Value.ToString()).ToString("yyyy-MM-dd");
+                    e.Value = DateTime.Parse(e.Value.ToString()).ToString("dd/MM/yyyy");
                 }
             }
         }
@@ -120,9 +89,54 @@ namespace app.Forms
             }
         }
 
-        private void txt_filtroData_Click(object sender, EventArgs e)
+      
+
+        private void apagarhistorico_Click(object sender, EventArgs e)
         {
-            txt_filtroData.SelectionStart = 0;
+            string data1 = dateTimePicker1.Value.ToString("yyyy-MM-dd");
+            string data2 = dateTimePicker2.Value.ToString("yyyy-MM-dd");
+
+            if (!DateTime.TryParse(data1, out DateTime d1) || !DateTime.TryParse(data2, out DateTime d2))
+            {
+                MessageBox.Show("Por favor, insere datas válidas!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (d1 > d2)
+            {
+                MessageBox.Show("A data inicial não pode ser maior que a final!", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DialogResult res = MessageBox.Show($"Apagar histórico de {d1:yyyy-MM-dd} a {d2:yyyy-MM-dd}?", "Apagar", MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                Banco.ApagarHistorico(d1.ToString("yyyy-MM-dd"), d2.AddDays(1).ToString("yyyy-MM-dd")); // inclui a data final
+                tbl_historico.DataSource = Banco.ObterHistorico();
+                
+            }
+        }
+
+
+        
+
+     
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+          
+        }
+
+        private void dateTimePicker3_ValueChanged(object sender, EventArgs e)
+        {
+            string dataSelecionada = dateTimePicker3.Value.ToString("yyyy-MM-dd");
+            tbl_historico.DataSource = Banco.ObterReservasPorData(dataSelecionada);
+        }
+
+
+        private void btn_todas_Click(object sender, EventArgs e)
+        {
+            tbl_historico.DataSource = Banco.ObterHistorico();
         }
     }
 }
